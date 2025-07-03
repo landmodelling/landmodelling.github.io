@@ -94,6 +94,31 @@
             padding: 15px 0;
             margin-top: 40px;
         }
+        /* Reduce spacing specifically for sponsor section */
+    .sponsor-section {
+        margin-top: 10px !important;
+        margin-bottom: 10px !important;
+        padding-bottom: 0 !important;
+    }
+    
+    /* Tighten up image spacing */
+    .sponsor-logos img,
+    .sponsor-logos1 img {
+        margin: 0 5px;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    
+    /* Optional: remove bottom margin on last section */
+    .agenda-section:last-of-type {
+        margin-bottom: 10px !important;
+    }
+    
+    /* Optional: reduce top margin on footer */
+    footer {
+        margin-top: 10px;
+    }
+
     </style>
 </head>
 <body>
@@ -233,7 +258,7 @@
 
 
 <!--     <!-- Sponsor Logos Section -->
-    <section class="agenda-section">
+<!--     <section class="agenda-section">
         <h2>Our Sponsors</h2>
         <div class="text-center sponsor-logos">
             <img src="images/ucar-logo.png" alt="UCAR Logo">
@@ -241,7 +266,7 @@
         <div class="text-center sponsor-logos1">
             <img src="images/jsg-logo.png" alt="Jackson School of Geosciences Logo">
         </div>
-    </section>
+    </section> -->
 
 <!-- Sponsor Logos Section -->
 <!-- <section class="agenda-section">
@@ -251,7 +276,16 @@
         <img class="sponsor-logos1" src="images/jsg-logo.png" alt="Jackson School of Geosciences Logo">
     </div>
 </section> -->
-    
+    <section class="agenda-section sponsor-section">
+    <h2>Our Sponsors</h2>
+    <div class="text-center sponsor-logos">
+        <img src="images/ucar-logo.png" alt="UCAR Logo">
+    </div>
+    <div class="text-center sponsor-logos1">
+        <img src="images/jsg-logo.png" alt="Jackson School of Geosciences Logo">
+    </div>
+</section>
+
     
     <footer class="text-center">
         <p>&copy; 2025 Workshop on Advancing Land Modeling | Hosted by UT Austin</p>
