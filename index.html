@@ -2,80 +2,147 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Workshop Agenda: Advancing Land Modeling for Gulf Coast Resilience</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Workshop: Advancing Land Modeling for Gulf Coast Resilience</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
   <style>
+    /* ---------- Base ---------- */
+    html { scroll-behavior: smooth; }
     body {
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
       line-height: 1.6;
       color: #333;
       margin: 0;
-      padding: 0;
       background: url('images/austin-texas-1756159.jpg') no-repeat center center fixed;
       background-size: cover;
     }
-    .container { background-color: rgba(255,255,255,.9); padding: 20px; border-radius: 10px; max-width: 1200px; margin: 0 auto; }
-    header { background-color: #bf5700; color: #fff; padding: 20px; margin-bottom: 30px; border-radius: 8px; }
-    header h1, header h3 { margin: 0; }
-    h2 { color: #bf5700; border-bottom: 2px solid #bf5700; padding-bottom: 5px; margin-top: 40px; }
-    .navbar { margin-bottom: 15px; border-radius: 8px; }
-    .navbar-default { background: #fff; border: 1px solid #eee; }
-    .organizer-img { border-radius: 50%; width: 150px; height: 150px; object-fit: cover; }
-    .sponsor-logos img { max-height: 40px; margin: 10px; height: auto; width: auto; }
-    .sponsor-logos1 img { max-height: 100px; margin: 10px; height: auto; width: auto; }
+    .page-wrap {
+      background: rgba(255,255,255,.92);
+      border-radius: 14px;
+      max-width: 1200px;
+      margin: 24px auto;
+      box-shadow: 0 12px 30px rgba(0,0,0,.15);
+      overflow: hidden;
+    }
+
+    /* ---------- Header / Hero ---------- */
+    header.hero {
+      position: relative;
+      padding: 36px 24px 18px;
+      background: linear-gradient(135deg, rgba(191,87,0,.95), rgba(191,87,0,.8));
+      color: #fff;
+    }
+    header.hero h1 { margin: 0 0 6px; font-weight: 700; letter-spacing: .2px; }
+    header.hero h3 { margin: 0; font-weight: 400; opacity: .95; }
+    .hero-sub { margin-top: 6px; opacity: .9; }
+
+    /* ---------- Tabs bar (sticky) ---------- */
+    .tabsbar {
+      position: sticky; top: 0; z-index: 1000;
+      background: #fff;
+      border-bottom: 1px solid #eee;
+      box-shadow: 0 4px 16px rgba(0,0,0,.04);
+    }
+    .tabsbar .nav { margin: 0; }
+    .tabsbar .nav>li>a {
+      padding: 14px 16px; font-weight: 600; color: #444; border-radius: 0;
+    }
+    .tabsbar .nav>li>a:hover { background: #fafafa; color: #bf5700; }
+    .tabsbar .nav>li.active>a,
+    .tabsbar .nav>li>a:focus { background: #fff3e8; color: #bf5700; }
+
+    /* ---------- Content ---------- */
+    .section { padding: 24px; }
+    h2.section-title {
+      color: #bf5700;
+      border-bottom: 2px solid #bf5700;
+      padding-bottom: 6px; margin-top: 6px;
+    }
+
+    /* make in-page anchors land below the sticky tabsbar */
+    h2, h3, header.hero { scroll-margin-top: 72px; }
+
+    .panel { border-radius: 10px; border-color: #f0f0f0; }
+    .panel-heading { border-top-left-radius: 10px; border-top-right-radius: 10px; }
     .panel-title small { display:block; font-weight: normal; color: #555; }
-    .meta-list { margin-bottom: 10px; }
-    .table>thead>tr>th { background: #f7f7f7; }
-    .zoom-box { background:#fff8e6; border:1px solid #ffe3b3; padding:10px; border-radius:6px; }
+
+    .table>thead>tr>th { background: #f9fafb; }
+    .zoom-box { background:#fff8e6; border:1px solid #ffe3b3; padding:10px; border-radius:8px; }
     .note { color:#555; font-style: italic; }
-    footer { background-color: #bf5700; color: white; padding: 15px 0; margin-top: 40px; border-radius: 8px; }
+
+    /* Participants */
+    .participant-search { margin: 12px 0 18px; }
+    .participants-list { columns: 2; column-gap: 40px; padding-left: 0; }
+    @media (max-width: 768px) { .participants-list { columns: 1; } }
+    .participants-list li { break-inside: avoid; list-style: none; margin: 6px 0; }
+
+    /* People grid */
+    .organizer-img { border-radius: 50%; width: 150px; height: 150px; object-fit: cover; box-shadow: 0 6px 18px rgba(0,0,0,.12); }
+
+    /* Sponsors */
+    .sponsor-logos img { max-height: 44px; margin: 10px; height: auto; width: auto; }
+    .sponsor-logos1 img { max-height: 100px; margin: 10px; height: auto; width: auto; }
+
+    /* Footer */
+    footer { background: #bf5700; color: #fff; padding: 18px 0; text-align: center; }
+
+    /* People grid */
+    .organizer-img { border-radius: 50%; width: 150px; height: 150px; object-fit: cover; box-shadow: 0 6px 18px rgba(0,0,0,.12); }
+
+    /* Sponsors */
+    .sponsor-logos img { max-height: 44px; margin: 10px; height: auto; width: auto; }
+    .sponsor-logos1 img { max-height: 100px; margin: 10px; height: auto; width: auto; }
+
+    /* Footer */
+    footer { background: #bf5700; color: #fff; padding: 18px 0; text-align: center; }
   </style>
 </head>
 <body>
-  <div class="container">
+  <div class="page-wrap">
 
-    <!-- Top Navigation -->
-    <nav class="navbar navbar-default">
+    <!-- Header / Hero -->
+    <header class="hero" id="top">
       <div class="container-fluid">
-        <ul class="nav navbar-nav">
-          <li><a href="#agenda">Agenda</a></li>
-          <li><a href="participants.html">Participants</a></li>
+        <h1>Advancing Land Modeling for Gulf Coast Resilience</h1>
+        <h3>August 14–15, 2025 &nbsp;|&nbsp; Austin, Texas (PRC Campus, UT Austin) &amp; Virtual</h3>
+        <p class="hero-sub">Hosted by The University of Texas at Austin • All times in U.S. Central Daylight Time (CDT)</p>
+      </div>
+    </header>
+
+    <!-- Tabs bar: moved BELOW the title and made sticky -->
+    <div class="tabsbar">
+      <div class="container-fluid">
+        <ul class="nav nav-pills">
+          <li class="active"><a href="#workshop-agenda">Agenda</a></li>
+          <li><a href="#participants">Participants</a></li>
           <li><a href="#organizers">Organizers</a></li>
           <li><a href="#posters">Posters</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
-    </nav>
+    </div>
 
-    <header class="text-center" id="agenda">
-      <h1>Advancing Land Modeling for Gulf Coast Resilience</h1>
-      <h3>August 14–15, 2025 &nbsp;|&nbsp; Austin, Texas (PRC Campus, UT Austin) &amp; Virtual</h3>
-      <div class="register-btn text-center" style="margin-top:15px;">
-        <a href="participants.html" class="btn btn-warning btn-lg">View Participants</a>
-      </div>
-    </header>
-
-    <section class="agenda-section">
+    <!-- Main Content -->
+    <section class="section">
       <p>Join us for a dynamic workshop hosted by The University of Texas at Austin to advance community‑driven land modeling and foster partnerships addressing environmental challenges in Texas and the Gulf Coast.</p>
 
-      <h2>Key Details</h2>
+      <h2 class="section-title">Key Details</h2>
       <ul class="meta-list">
         <li><strong>Date:</strong> August 14–15, 2025</li>
-        <li><strong>Location:</strong> ROC 1.603 (PRC 196), 10601 Exploration Way, Austin, TX 78758, The University of Texas at Austin (see parking and campus maps at the end of this document)</li>
+        <li><strong>Location:</strong> ROC 1.603 (PRC 196), 10601 Exploration Way, Austin, TX 78758 (see parking and campus maps at the end of this document)</li>
         <li><strong>Participants:</strong> 255 registered (72 in‑person, 183 virtual)</li>
       </ul>
       <p class="note">
-        Notes: All times are U.S. Central Daylight Time (CDT). Breakfast, lunch, and dinner provided on both days. International virtual talks are pre‑recorded (12 minutes). Virtual sessions will be recorded for asynchronous viewing. A poster session is scheduled on Day 1, with posters accessible throughout. A panel discussion will be held each day to synthesize key findings for Gulf Coast resilience. Sessions end by 5:30 PM when possible (no later than 6:00 PM). Lunch breaks are ~1 hour.
+        Notes: Breakfast, lunch, and dinner provided on both days. International virtual talks are pre‑recorded (12 minutes). Virtual sessions will be recorded for asynchronous viewing. A poster session is scheduled on Day 1. A panel discussion will be held each day to synthesize key findings for Gulf Coast resilience. Sessions end by ~5:30 PM (no later than 6:00 PM).
       </p>
 
-      <h2>Venue Location</h2>
+      <h2 class="section-title">Venue Location</h2>
       <p><strong>Pickle Research Campus, UT Austin</strong><br />10100 Burnet Rd, Austin, TX 78758</p>
-      <div style="width:100%; height:400px; margin-bottom:20px;">
+      <div style="width:100%; height:380px; margin-bottom:20px; border-radius:10px; overflow:hidden; box-shadow:0 8px 22px rgba(0,0,0,.08);">
         <iframe width="100%" height="100%" frameborder="0" style="border:0" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Pickle+Research+Campus+UT+Austin&output=embed"></iframe>
       </div>
 
-      <h2>Workshop Agenda</h2>
+      <h2 class="section-title" id="workshop-agenda">Workshop Agenda</h2>
 
       <!-- DAY 1 -->
       <div class="panel panel-default">
@@ -309,7 +376,7 @@
         </div>
       </div>
 
-      <h2 id="posters">Full List of Posters</h2>
+      <h2 class="section-title" id="posters">Full List of Posters</h2>
       <p class="note">Poster session on Day 1 (August 14), 5:05–5:50 PM. Organized by scientific session theme.</p>
 
       <h4>Hydrological Application and Advancement (4 Posters)</h4>
@@ -350,8 +417,80 @@
       </ol>
     </section>
 
-    <section class="agenda-section" id="organizers">
-      <h2>Organizers</h2>
+    <!-- Participants -->
+    <section class="section" id="participants">
+      <h2 class="section-title">Participants</h2>
+      <input type="text" id="participantFilter" class="form-control participant-search" placeholder="Search participants by name or affiliation…" />
+      <ul class="participants-list">
+        <li><a href="https://profiles.rice.edu/student/adnan-dehghani" target="_blank">Adnan Dehghani</a>, Rice University</li>
+        <li><a href="https://artsci.tamu.edu/atmos-science/contact/profiles/andrew-dessler.html" target="_blank">Andrew Dessler</a>, Texas A&amp;M University</li>
+        <li><a href="https://ral.ucar.edu/directory/andrew-newman" target="_blank">Andrew Newman</a>, NSF NCAR</li>
+        <li><a href="https://www.harteresearch.org/people/angelica-ovalle" target="_blank">Angelica Ovalle</a>, TAMUCC</li>
+        <li><a href="https://www.beg.utexas.edu/people/ashraf-rateb" target="_blank">Ashraf Rateb</a>, University of Texas at Austin</li>
+        <li><a href="https://www.jsg.utexas.edu/researcher/ashley_matheny/" target="_blank">Ashley Matheny</a>, University of Texas at Austin</li>
+        <li><a href="https://faculty.txst.edu/profile/2511547" target="_blank">Babak Heidari</a>, Texas State University</li>
+        <li><a href="https://www.beg.utexas.edu/people/bridget-scanlon" target="_blank">Bridget Scanlon</a>, University of Texas at Austin</li>
+        <li><a href="https://cpaess.ucar.edu/cgc-host/cenlin-he" target="_blank">Cenlin He</a>, NSF NCAR</li>
+        <li><a href="https://www.jsg.utexas.edu/researcher/chenxi_hu/" target="_blank">Chenxi Hu</a>, University of Texas at Austin</li>
+        <li><a href="https://www.linkedin.com/in/chieh-chen-lee-6a5675290/" target="_blank">Chieh-Chen Lee</a>, University of Texas at Austin</li>
+        <li><a href="https://www.jsg.utexas.edu/researcher/daniel_stockli/" target="_blank">Danny Stockli</a>, University of Texas at Austin</li>
+        <li><a href="https://profiles.stanford.edu/dapeng-feng" target="_blank">Dapeng Feng</a>, Stanford University</li>
+        <li><a href="https://faculty.txst.edu/profile/2472587" target="_blank">Eunsang Cho</a>, Texas State University</li>
+        <li><a href="https://www.linkedin.com/in/farhaan-cooverji-a19558213/" target="_blank">Farhaan Cooverji</a>, Texas State University</li>
+        <li><a href="https://ral.ucar.edu/directory/farshid-felfelani" target="_blank">Farshid Felfelani</a>, NSF NCAR</li>
+        <li><a href="https://www.tuskegee.edu/programs-courses/colleges-schools/caens/daes/contact-us/daes-faculty/gamal-el-afandi-phd" target="_blank">Gamal El Afandi</a>, Tuskegee University</li>
+        <li><a href="https://has.arizona.edu/person/guo-yue-niu" target="_blank">Guo-Yue Niu</a>, University of Arizona</li>
+        <li><a href="https://www.cive.uh.edu/faculty/rifai" target="_blank">Hanadi Rifai</a>, University of Houston</li>
+        <li><a href="https://www.linkedin.com/in/harshkamath/" target="_blank">Harsh Kamath</a>, University of Texas at Austin</li>
+        <li><a href="https://www.beg.utexas.edu/people/hassan-dashtian" target="_blank">Hassan Dashtian</a>, University of Texas at Austin</li>
+        <li><a href="https://engineering.tamu.edu/civil/profiles/hgao.html" target="_blank">Huilin Gao</a>, Texas A&amp;M University</li>
+        <li><a href="https://www.linkedin.com/in/john-zhu-555560100/" target="_blank">John Zhu</a>, Texas Water Development Board</li>
+        <li><a href="https://lbj.utexas.edu/deshazo-jr" target="_blank">JR DeShazo</a>, University of Texas at Austin</li>
+        <li><a href="https://www.linkedin.com/in/ktwu01/" target="_blank">Koutian Wu</a>, University of Texas at Austin</li>
+        <li><a href="https://www.pnnl.gov/science/staff/staff_info.asp?staff_num=10348" target="_blank">Lingcheng Li</a>, Pacific Northwest National Laboratory</li>
+        <li><a href="https://directory.illinois.edu/detail?userId=lkumar@illinois.edu&widgetId=15" target="_blank">Love Kumar</a>, University of Illinois</li>
+        <li><a href="https://www.linkedin.com/in/mahmoud-mbarak-4509b335a/" target="_blank">M Mbarak</a>, University of Texas at Austin</li>
+        <li><a href="https://www.linkedin.com/in/madhusmita-swain/" target="_blank">Madhusmita Swain</a>, University at Albany</li>
+        <li><a href="https://scholar.google.com/citations?user=FXuGjvQAAAAJ&hl=en" target="_blank">Mahsa Moradi</a>, University of New Hampshire</li>
+        <li><a href="https://soa.utexas.edu/faculty/marc-coudert" target="_blank">Marc Coudert</a>, Office of Climate Action &amp; Resilience, City of Austin</li>
+        <li><a href="https://www.jsg.utexas.edu/researcher/marc_hesse/" target="_blank">Marc Hesse</a>, University of Texas at Austin</li>
+        <li><a href="https://texaswaterassociation.org/Sys/PublicProfile/56355501" target="_blank">Marisa Flores Gonzalez</a>, Austin Water, City of Austin</li>
+        <li><a href="https://faculty.txst.edu/profile/2538928" target="_blank">Md Munir Mahmud</a>, Texas State University</li>
+        <li><a href="https://psl.noaa.gov/staff/spotlight/2020/fowler.html" target="_blank">Meg Fowler</a>, NSF NCAR</li>
+        <li><a href="https://ral.ucar.edu/directory/michael-ek" target="_blank">Mike Ek</a>, NSF NCAR</li>
+        <li><a href="https://hgao.engr.tamu.edu/people/muzhen-yang/" target="_blank">Muzhen Yang</a>, Texas A&amp;M University</li>
+        <li><a href="http://naveens.info/" target="_blank">Naveen Sudharsan</a>, University of Texas at Austin</li>
+        <li><a href="https://www.linkedin.com/in/nelun-fernando-3938bb22/" target="_blank">Nelun Fernando</a>, Texas Water Development Board</li>
+        <li><a href="https://profiles.rice.edu/faculty/noemi-vergopolan" target="_blank">Noemi Vergopolan</a>, Rice University</li>
+        <li><a href="https://www.linkedin.com/in/rakshithm01/" target="_blank">Rakshith Mallesh</a>, University of Texas at Austin</li>
+        <li>Reda, Tuskegee University</li>
+        <li><a href="https://www.linkedin.com/in/ronnie-abolafia-rosenzweig-phd/" target="_blank">Ronnie Abolafia-Rosenzweig</a>, NSF NCAR</li>
+        <li><a href="https://www.linkedin.com/in/sastalukdar/" target="_blank">Sasanka Talukdar</a>, University of Texas at Austin</li>
+        <li>Shinhye Han, Rice University</li>
+        <li><a href="https://www.linkedin.com/in/shokoufeh-khojeh/" target="_blank">Shuku Khojeh</a>, University of Texas at Austin</li>
+        <li><a href="https://www.jsg.utexas.edu/researcher/shyama_mohanty/" target="_blank">Shyama Mohanty</a>, University of Texas at Austin</li>
+        <li><a href="https://faculty.txst.edu/profile/2417388" target="_blank">Soe W Myint</a>, Texas State University</li>
+        <li><a href="https://sreenathpaleri.github.io/" target="_blank">Sreenath Paleri</a>, Texas A&amp;M University</li>
+        <li><a href="https://www.linkedin.com/in/stanley-akor-0357a01b4/" target="_blank">Stanley Akor</a>, Boise State University</li>
+        <li><a href="https://ral.ucar.edu/directory/tom-enzminger" target="_blank">Tom Enzminger</a>, NSF NCAR</li>
+        <li><a href="https://www.linkedin.com/in/vivek-kumar-singh-08717827/?originalSubdomain=in" target="_blank">Vivek Kumar Singh</a>, Oak Ridge National Lab</li>
+        <li><a href="https://www.beg.utexas.edu/people/wonhyun-lee" target="_blank">Wonhyun Lee</a>, University of Texas at Austin</li>
+        <li><a href="https://faculty.lsu.edu/zxue/files/cv-xzhao-202111-website.pdf" target="_blank">Xiaochen Zhao</a>, Louisiana State University</li>
+        <li><a href="https://www.linkedin.com/in/xinxin-sui-9b2673151/?locale=en_US" target="_blank">Xinxin Sui</a>, University of Texas at Austin</li>
+        <li><a href="https://www.linkedin.com/in/jadwiga-yaga-richter-27155b63/" target="_blank">Yaga Richter</a>, NSF NCAR</li>
+        <li><a href="https://eds.ucsd.edu/graduate/doctoral/phd/phd-students/PhD4-Profiles/Jiang-y.html" target="_blank">Yan Jiang</a>, University of California, San Diego</li>
+        <li><a href="https://www.beg.utexas.edu/people/yiming-zhang" target="_blank">Yiming Zhang</a>, University of Texas at Austin</li>
+        <li><a href="https://hgao.engr.tamu.edu/people/yinuo-zhu/" target="_blank">Yinuo Zhu</a>, Texas A&amp;M University</li>
+        <li><a href="https://search.asu.edu/profile/5199017" target="_blank">Yuan Qiu</a>, Arizona State University</li>
+        <li><a href="https://www.pnnl.gov/people/yun-qian" target="_blank">Yun Qian</a>, Pacific Northwest National Laboratory</li>
+        <li><a href="https://scholar.google.com/citations?user=R5HGJfcAAAAJ" target="_blank">Yuanhui Zhu</a>, Texas State University</li>
+        <li><a href="https://sites.create.ou.edu/chenghaowang/yuqi-huang/" target="_blank">Yuqi Huang</a>, University of Oklahoma</li>
+        <li><a href="https://marinescience.utexas.edu/directory/zhanfei-liu" target="_blank">Zhanfei Liu</a>, University of Texas at Austin</li>
+        <li><a href="https://www.linkedin.com/in/zhe-zhang-507ab4250/" target="_blank">Zhe Zhang</a>, NSF NCAR</li>
+        <li><a href="https://www.pnnl.gov/science/staff/staff_info.asp?staff_num=9440" target="_blank">Zhao Yang</a>, Pacific Northwest National Laboratory</li>
+        <li><a href="https://www.jsg.utexas.edu/researcher/zong-liang_yang/" target="_blank">Zong-Liang Yang</a>, University of Texas
+    <section class="section" id="organizers">
+      <h2 class="section-title">Organizers</h2>
       <div class="row">
         <div class="col-sm-3 text-center">
           <img src="images/liang.jpg" class="organizer-img" alt="Zong-Liang Yang" />
@@ -359,42 +498,3 @@
           <p>UT Austin<br />Lead Organizer</p>
         </div>
         <div class="col-sm-3 text-center">
-          <img src="images/soe.jpeg" class="organizer-img" alt="Soe Win Myint" />
-          <h4>Dr. Soe Win Myint</h4>
-          <p>Texas State University<br />Co‑Organizer</p>
-        </div>
-        <div class="col-sm-3 text-center">
-          <img src="images/cenlin.jpeg" class="organizer-img" alt="Cenlin He" />
-          <h4>Dr. Cenlin He</h4>
-          <p>NSF NCAR<br />Workshop Co‑Lead</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="agenda-section contact-section" id="contact">
-      <h2>Contact Us</h2>
-      <p><strong>Join our mailing list:</strong> Email <a href="mailto:liang@jsg.utexas.edu">liang@jsg.utexas.edu</a> to be added to updates.</p>
-      <h3>Workshop Chair</h3>
-      <p><strong>Zong‑Liang Yang</strong><br />Professor, Department of Earth and Planetary Sciences, Jackson School of Geosciences, UT Austin<br /><a href="mailto:liang@jsg.utexas.edu">liang@jsg.utexas.edu</a></p>
-      <h3>Organizing Committee</h3>
-      <p><strong>Cenlin He</strong><br />Scientist, NSF NCAR<br /><a href="mailto:cenlin@ucar.edu">cenlin@ucar.edu</a></p>
-      <p><strong>Soe Win Myint</strong><br />Professor, Department of Geography, Texas State University<br /><a href="mailto:soe.myint@txstate.edu">soe.myint@txstate.edu</a></p>
-      <p><strong>Local Organizing Committee</strong><br />Jackson School of Geosciences, UT Austin<br />Mahmoud Mbarak, Jagger Alexander, Shokoufeh Khojeh, Chieh‑Chen Lee, Chenxi Hu, Manmeet Singh, Naveen Sudharsan, Harsh Kamath, Xinxin Sui, Hassan Dashtian</p>
-    </section>
-
-    <section class="agenda-section sponsor-section">
-      <h2>Our Sponsors</h2>
-      <div class="text-center sponsor-logos">
-        <img src="images/ucar-logo.png" alt="UCAR Logo" />
-      </div>
-      <div class="text-center sponsor-logos1">
-        <img src="images/jsg-logo.png" alt="Jackson School of Geosciences Logo" />
-      </div>
-    </section>
-
-    <footer class="text-center">
-      <p>&copy; 2025 Workshop on Advancing Land Modeling | Hosted by UT Austin</p>
-    </footer>
-  </div>
-</body>
-</html>
