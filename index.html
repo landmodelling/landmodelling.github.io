@@ -7,135 +7,70 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <style>
         body {
-        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-        line-height: 1.6;
-        color: #333;
-        margin: 0;
-        padding: 0;
-        background: url('images/austin-texas-1756159.jpg') no-repeat center center fixed;
-        background-size: cover;
-    }
-/*         body {
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
             line-height: 1.6;
-            background-color: #ffffff;
             color: #333;
-        }
- */
-        .container {
-        background-color: rgba(255, 255, 255, 0.8); /* Makes text readable over image */
-        padding: 20px;
-        border-radius: 10px;
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-        
-         .header-img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        .register-btn {
-            margin-top: 20px;
-        }
-
-        header {
-            background-color: #bf5700;
-            color: white;
-            padding: 20px;
-            margin-bottom: 30px;
-        }
-        header h1, header h3 {
             margin: 0;
+            padding: 0;
+            background: url('images/austin-texas-1756159.jpg') no-repeat center center fixed;
+            background-size: cover;
         }
-        .agenda-section {
-            margin-top: 30px;
+        .container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
-        h2 {
-            color: #bf5700;
-            border-bottom: 2px solid #bf5700;
-            padding-bottom: 5px;
-            margin-top: 40px;
-        }
-        .organizer-img {
-            border-radius: 50%;
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-        }
-        .sponsor-logos img {
-            max-height: 40px;
-            margin: 10px;
-            height: auto;
-            width: auto;
-        }
-        .sponsor-logos1 img {
-            max-height: 100px;
-            margin: 10px;
-            height: auto;
-            width: auto;
-        }
-        .sponsor-logos,
-        .sponsor-logos1 {
-            margin-bottom: 5px; /* Reduce bottom margin */
-        }
-        
-        .agenda-section:last-of-type {
-            margin-bottom: 10px; /* Reduce space before footer */
-        }
-
-        .organizer {
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        footer {
-            background-color: #bf5700;
-            color: white;
-            padding: 15px 0;
-            margin-top: 40px;
-        }
-        /* Reduce spacing specifically for sponsor section */
-    .sponsor-section {
-        margin-top: 10px !important;
-        margin-bottom: 10px !important;
-        padding-bottom: 0 !important;
-    }
-    
-    /* Tighten up image spacing */
-    .sponsor-logos img,
-    .sponsor-logos1 img {
-        margin: 0 5px;
-        display: inline-block;
-        vertical-align: middle;
-    }
-    
-    /* Optional: remove bottom margin on last section */
-    .agenda-section:last-of-type {
-        margin-bottom: 10px !important;
-    }
-    
-    /* Optional: reduce top margin on footer */
-    footer {
-        margin-top: 10px;
-    }
-
+        .header-img { width: 100%; height: auto; display: block; }
+        .register-btn { margin-top: 20px; }
+        header { background-color: #bf5700; color: white; padding: 20px; margin-bottom: 30px; }
+        header h1, header h3 { margin: 0; }
+        .agenda-section { margin-top: 30px; }
+        h2 { color: #bf5700; border-bottom: 2px solid #bf5700; padding-bottom: 5px; margin-top: 40px; }
+        .organizer-img { border-radius: 50%; width: 150px; height: 150px; object-fit: cover; }
+        .sponsor-logos img { max-height: 40px; margin: 10px; height: auto; width: auto; }
+        .sponsor-logos1 img { max-height: 100px; margin: 10px; height: auto; width: auto; }
+        .sponsor-logos, .sponsor-logos1 { margin-bottom: 5px; }
+        .agenda-section:last-of-type { margin-bottom: 10px; }
+        .organizer { margin-bottom: 20px; text-align: center; }
+        footer { background-color: #bf5700; color: white; padding: 15px 0; margin-top: 40px; }
+        .sponsor-section { margin-top: 10px !important; margin-bottom: 10px !important; padding-bottom: 0 !important; }
+        .sponsor-logos img, .sponsor-logos1 img { margin: 0 5px; display: inline-block; vertical-align: middle; }
+        footer { margin-top: 10px; }
+        /* simple sticky nav */
+        .navbar { margin-bottom: 15px; border-radius: 8px; }
+        .navbar-default { background: #fff; border: 1px solid #eee; }
     </style>
 </head>
 <body>
 <div class="container">
-    <header class="text-center">
-<!--         <img src="images/header_photo.jpg" alt="Land Modeling Visualization" class="header-img"> -->
+
+    <!-- Top Navigation -->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav">
+                <li><a href="#agenda">Agenda</a></li>
+                <li><a href="participants.html">Participants</a></li>
+                <li><a href="#organizers">Organizers</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="text-center" id="agenda">
         <h1>Advancing Land Modeling for Gulf Coast Resilience</h1>
         <h3>August 14–15, 2025 | Austin, Texas (PRC Campus, UT Austin) & Virtual</h3>
         <div class="register-btn">
-        <a href="https://forms.gle/X6jesSjCHq11TDSc8" class="btn btn-warning btn-lg" target="_blank">Register Now</a>
-    </div>
+            <!-- Replaced Register with Participants page button -->
+            <a href="participants.html" class="btn btn-warning btn-lg">View Participants</a>
+        </div>
     </header>
 
     <section class="agenda-section">
-         <p>
-        Join us for a dynamic workshop hosted by The University of Texas at Austin to advance community-driven land modeling and foster
-        partnerships addressing environmental challenges in Texas and the Gulf Coast.
+        <p>
+            Join us for a dynamic workshop hosted by The University of Texas at Austin to advance community-driven land modeling and foster
+            partnerships addressing environmental challenges in Texas and the Gulf Coast.
         </p>
         <h2>Why Attend?</h2>
         <ul>
@@ -148,70 +83,49 @@
             <li><strong>Advance Science:</strong> Enhance Noah-MP through participatory modeling, integrating
                 high-resolution environmental and hydrological data for policy-relevant outcomes.</li>
         </ul>
-<h2>Key Details</h2>
-    <ul>
-        <li><strong>Date:</strong> August 14–15, 2025</li>
-        <li><strong>Location:</strong> Austin, Texas (Venue: PRC Campus)</li>
-        <li><strong>Participants:</strong> ~60 attendees (in person) + online attendees.</li>
-        <li><strong>Activities:</strong> Interactive sessions, breakout discussions, and hands-on Noah-MP modeling workshops.</li>
-        <li><strong>Funded By:</strong> UCAR and Jackson School of Geosciences.</li>
-    </ul>
 
-    <p><strong>Registration Deadline:</strong> Please register by June 20, 2025 for in-person attendance (limited to fewer than 60 participants), or by July 15, 2025 for virtual attendance.</p>
-<h2>Venue Location</h2>
-<p><strong>Pickle Research Campus, UT Austin</strong><br>
-10100 Burnet Rd, Austin, TX 78758</p>
+        <h2>Key Details</h2>
+        <ul>
+            <li><strong>Date:</strong> August 14–15, 2025</li>
+            <li><strong>Location:</strong> Austin, Texas (Venue: PRC Campus)</li>
+            <li><strong>Participants:</strong> ~60 attendees (in person) + online attendees.</li>
+            <li><strong>Activities:</strong> Interactive sessions, breakout discussions, and hands-on Noah-MP modeling workshops.</li>
+            <li><strong>Funded By:</strong> UCAR and Jackson School of Geosciences.</li>
+        </ul>
 
-<div style="width: 100%; height: 400px; margin-bottom: 20px;">
-    <iframe
-        width="100%"
-        height="100%"
-        frameborder="0" 
-        style="border:0"
-        loading="lazy"
-        allowfullscreen
-        referrerpolicy="no-referrer-when-downgrade"
-        src="https://www.google.com/maps?q=Pickle+Research+Campus+UT+Austin&output=embed">
-    </iframe>
-</div>
+        <p><strong>Registration Deadline:</strong> Please register by June 20, 2025 for in-person attendance (limited to fewer than 60 participants), or by July 15, 2025 for virtual attendance.</p>
 
+        <h2>Venue Location</h2>
+        <p><strong>Pickle Research Campus, UT Austin</strong><br>
+        10100 Burnet Rd, Austin, TX 78758</p>
 
-        
-<!-- <h2>Venue Location</h2>
-<p><strong>Pickle Research Campus, UT Austin</strong><br>
-10100 Burnet Rd, Austin, TX 78758</p>
+        <div style="width: 100%; height: 400px; margin-bottom: 20px;">
+            <iframe
+                width="100%" height="100%" frameborder="0" style="border:0" loading="lazy" allowfullscreen
+                referrerpolicy="no-referrer-when-downgrade"
+                src="https://www.google.com/maps?q=Pickle+Research+Campus+UT+Austin&output=embed">
+            </iframe>
+        </div>
 
-<div style="width: 100%; height: 400px; border: none; margin-bottom: 20px;">
-    <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11050.05553815622!2d-97.74030354257944!3d30.387181963478643!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8644cae2e39d175b%3A0x86a690f92f8d1b98!2sPickle%20Research%20Campus%2C%20UT%20Austin!5e0!3m2!1sen!2sus!4v1720000000000!5m2!1sen!2sus" 
-        width="100%" 
-        height="100%" 
-        style="border:0;" 
-        allowfullscreen="" 
-        loading="lazy" 
-        referrerpolicy="no-referrer-when-downgrade">
-    </iframe>
-</div>
- -->
-    <h2>Expected Outcomes</h2>
-    <ul>
-        <li>Strengthen interdisciplinary collaboration across academia, agencies, and communities.</li>
-        <li>Develop inclusive, community-driven solutions for environmental resilience.</li>
-        <li>Share results through open-access publications and a dedicated Python package for global researchers.</li>
-        <li>Promote diversity in research perspectives and actionable policy insights.</li>
-    </ul>
-<h2>Keynote Speakers</h2>
-<ul>
+        <h2>Expected Outcomes</h2>
+        <ul>
+            <li>Strengthen interdisciplinary collaboration across academia, agencies, and communities.</li>
+            <li>Develop inclusive, community-driven solutions for environmental resilience.</li>
+            <li>Share results through open-access publications and a dedicated Python package for global researchers.</li>
+            <li>Promote diversity in research perspectives and actionable policy insights.</li>
+        </ul>
 
-    <li><strong>JR DeShazo:</strong> Extreme Weather Events in Texas and Adaptation Strategies (Session 1)</li>
-        <li><strong>Yaga Richter:</strong> Subseasonal-to-Seasonal (S2S) Prediction</li>
-        <li><strong>Dapeng Feng:</strong> Differentiable Land Modeling</li>
-        <li><strong>Andrew Newman:</strong> Community Engagement</li>
-        <li><strong>Chenghao Wang:</strong> Urban Modeling</li>
-        <li><strong>Ashley Matheny:</strong> Plant Hydraulics</li>
-        <li><strong>Sujay Kumar:</strong> NLDAS-3 and NASA Earth Observations</li>
-        <li><strong>Nelun Fernando & Marisa Flores Gonzalez:</strong> Policy-Driven Model Developments</li>
-</ul>
+        <h2>Keynote Speakers</h2>
+        <ul>
+            <li><strong>JR DeShazo:</strong> Extreme Weather Events in Texas and Adaptation Strategies (Session 1)</li>
+            <li><strong>Yaga Richter:</strong> Subseasonal-to-Seasonal (S2S) Prediction</li>
+            <li><strong>Dapeng Feng:</strong> Differentiable Land Modeling</li>
+            <li><strong>Andrew Newman:</strong> Community Engagement</li>
+            <li><strong>Chenghao Wang:</strong> Urban Modeling</li>
+            <li><strong>Ashley Matheny:</strong> Plant Hydraulics</li>
+            <li><strong>Sujay Kumar:</strong> NLDAS-3 and NASA Earth Observations</li>
+            <li><strong>Nelun Fernando & Marisa Flores Gonzalez:</strong> Policy-Driven Model Developments</li>
+        </ul>
 
         <h2>Workshop Agenda</h2>
         <h3>Day 1: Thursday, August 14, 2025</h3>
@@ -236,7 +150,7 @@
         </ul>
     </section>
 
-    <section class="agenda-section">
+    <section class="agenda-section" id="organizers">
         <h2>Organizers</h2>
         <div class="row">
             <div class="col-sm-3 organizer">
@@ -257,42 +171,34 @@
         </div>
     </section>
 
-<section class="agenda-section contact-section">
-    <h2>Contact Us</h2>
+    <section class="agenda-section contact-section" id="contact">
+        <h2>Contact Us</h2>
+        <p><strong>Join our mailing list:</strong> Please email <a href="mailto:liang@jsg.utexas.edu">liang@jsg.utexas.edu</a> to be added to updates.</p>
+        <h3>Workshop Chair</h3>
+        <p>
+            <strong>Zong-Liang Yang</strong><br>
+            Professor, Department of Earth and Planetary Sciences, Jackson School of Geosciences, UT Austin<br>
+            <a href="mailto:liang@jsg.utexas.edu">liang@jsg.utexas.edu</a>
+        </p>
+        <h3>Organizing Committee</h3>
+        <p>
+            <strong>Cenlin He</strong><br>
+            Scientist, NSF NCAR<br>
+            <a href="mailto:cenlin@ucar.edu">cenlin@ucar.edu</a>
+        </p>
+        <p>
+            <strong>Soe Win Myint</strong><br>
+            Professor, Department of Geography, Texas State University<br>
+            <a href="mailto:soe.myint@txstate.edu">soe.myint@txstate.edu</a>
+        </p>
+        <p>
+            <strong>Local Organizing Committee</strong><br>
+            Jackson School of Geosciences, UT Austin<br>
+            Mahmoud Mbarak, Jagger Alexander, Shokoufeh Khojeh, Chieh-Chen Lee, Chenxi Hu, Manmeet Singh, Naveen Sudharsan, Harsh Kamath, Xinxin Sui, Hassan Dashtian
+        </p>
+    </section>
 
-    <p><strong>Join our mailing list:</strong> Please email <a href="mailto:liang@jsg.utexas.edu">liang@jsg.utexas.edu</a> to be added to updates.</p>
-
-    <h3>Workshop Chair</h3>
-    <p>
-        <strong>Zong-Liang Yang</strong><br>
-        Professor, Department of Earth and Planetary Sciences, Jackson School of Geosciences, UT Austin<br>
-        <a href="mailto:liang@jsg.utexas.edu">liang@jsg.utexas.edu</a>
-    </p>
-
-    <h3>Organizing Committee</h3>
-
-    <p>
-        <strong>Cenlin He</strong><br>
-        Scientist, NSF NCAR<br>
-        <a href="mailto:cenlin@ucar.edu">cenlin@ucar.edu</a>
-    </p>
-
-    <p>
-        <strong>Soe Win Myint</strong><br>
-        Professor, Department of Geography, Texas State University<br>
-        <a href="mailto:soe.myint@txstate.edu">soe.myint@txstate.edu</a>
-    </p>
-
-    <p>
-        <strong>Local Organizing Committee</strong><br>
-        Jackson School of Geosciences, UT Austin<br>
-        Mahmoud Mbarak, Jagger Alexander, Shokoufeh Khojeh, Chieh-Chen Lee, Chenxi Hu, Manmeet Singh, Naveen Sudharsan, Harsh Kamath, Xinxin Sui, Hassan Dashtian 
-    </p>
-</section>
-
-
-<!--     <!-- Sponsor Logos Section -->
-<!--     <section class="agenda-section">
+    <section class="agenda-section sponsor-section">
         <h2>Our Sponsors</h2>
         <div class="text-center sponsor-logos">
             <img src="images/ucar-logo.png" alt="UCAR Logo">
@@ -300,27 +206,8 @@
         <div class="text-center sponsor-logos1">
             <img src="images/jsg-logo.png" alt="Jackson School of Geosciences Logo">
         </div>
-    </section> -->
+    </section>
 
-<!-- Sponsor Logos Section -->
-<!-- <section class="agenda-section">
-    <h2>Our Sponsors</h2>
-    <div class="text-center sponsor-logos-container">
-        <img class="sponsor-logos" src="images/ucar-logo.png" alt="UCAR Logo">
-        <img class="sponsor-logos1" src="images/jsg-logo.png" alt="Jackson School of Geosciences Logo">
-    </div>
-</section> -->
-    <section class="agenda-section sponsor-section">
-    <h2>Our Sponsors</h2>
-    <div class="text-center sponsor-logos">
-        <img src="images/ucar-logo.png" alt="UCAR Logo">
-    </div>
-    <div class="text-center sponsor-logos1">
-        <img src="images/jsg-logo.png" alt="Jackson School of Geosciences Logo">
-    </div>
-</section>
-
-    
     <footer class="text-center">
         <p>&copy; 2025 Workshop on Advancing Land Modeling | Hosted by UT Austin</p>
     </footer>
