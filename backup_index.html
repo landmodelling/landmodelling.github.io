@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Workshop: Advancing Land Modeling for Gulf Coast Resilience</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+  <style>
+    .venue-photos figure { margin: 0 0 16px; }
+    .venue-photos figcaption { font-size: 13px; color: #666; margin-top: 6px; }
+    .venue-img { width: 100%; height: 260px; object-fit: cover; border-radius: 10px; box-shadow: 0 6px 18px rgba(0,0,0,.08); }
+    @media (min-width: 992px) { .venue-img { height: 300px; } }
+
+    /* ---------- Base ---------- */
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      margin: 0;
+      background: url('images/austin-texas-1756159.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
+    .page-wrap {
+      background: rgba(255,255,255,.92);
+      border-radius: 14px;
+      max-width: 1200px;
+      margin: 24px auto;
+      box-shadow: 0 12px 30px rgba(0,0,0,.15);
+      overflow: hidden;
+    }
+
+    /* ---------- Header / Hero ---------- */
+    header.hero {
+      position: relative;
+      padding: 36px 24px 18px;
+      background: linear-gradient(135deg, rgba(191,87,0,.95), rgba(191,87,0,.8));
+      color: #fff;
+    }
+    header.hero h1 { margin: 0 0 6px; font-weight: 700; letter-spacing: .2px; }
+    header.hero h3 { margin: 0; font-weight: 400; opacity: .95; }
+    .hero-sub { margin-top: 6px; opacity: .9; }
+
+    /* ---------- Tabs bar (sticky) ---------- */
+    .tabsbar {
+      position: sticky; top: 0; z-index: 1000;
+      background: #fff;
+      border-bottom: 1px solid #eee;
+      box-shadow: 0 4px 16px rgba(0,0,0,.04);
+    }
+    .tabsbar .nav { margin: 0; }
+    .tabsbar .nav>li>a {
+      padding: 14px 16px; font-weight: 600; color: #444; border-radius: 0;
+    }
+    .tabsbar .nav>li>a:hover { background: #fafafa; color: #bf5700; }
+    .tabsbar .nav>li.active>a,
+    .tabsbar .nav>li>a:focus { background: #fff3e8; color: #bf5700; }
+
+    /* ---------- Content ---------- */
+    .section { padding: 24px; }
+    h2.section-title {
+      color: #bf5700;
+      border-bottom: 2px solid #bf5700;
+      padding-bottom: 6px; margin-top: 6px;
+    }
+
+    /* make in-page anchors land below the sticky tabsbar */
+    h2, h3, header.hero { scroll-margin-top: 72px; }
+
+    .panel { border-radius: 10px; border-color: #f0f0f0; }
+    .panel-heading { border-top-left-radius: 10px; border-top-right-radius: 10px; }
+    .panel-title small { display:block; font-weight: normal; color: #555; }
+
+    .table>thead>tr>th { background: #f9fafb; }
+    .zoom-box { background:#fff8e6; border:1px solid #ffe3b3; padding:10px; border-radius:8px; }
+    .note { color:#555; font-style: italic; }
+
+    /* Participants */
+    .participant-search { margin: 12px 0 18px; }
+    .participants-list { columns: 2; column-gap: 40px; padding-left: 0; }
+    @media (max-width: 768px) { .participants-list { columns: 1; } }
+    .participants-list li { break-inside: avoid; list-style: none; margin: 6px 0; }
+
+    /* People grid */
+    .organizer-img { border-radius: 50%; width: 150px; height: 150px; object-fit: cover; box-shadow: 0 6px 18px rgba(0,0,0,.12); }
+
+    /* Sponsors */
+    .sponsor-logos img { max-height: 44px; margin: 10px; height: auto; width: auto; }
+    .sponsor-logos1 img { max-height: 100px; margin: 10px; height: auto; width: auto; }
+
+    /* Footer */
+    footer { background: #bf5700; color: #fff; padding: 18px 0; text-align: center; }
+
+    /* People grid */
+    .organizer-img { border-radius: 50%; width: 150px; height: 150px; object-fit: cover; box-shadow: 0 6px 18px rgba(0,0,0,.12); }
+
+    /* Sponsors */
+    .sponsor-logos img { max-height: 44px; margin: 10px; height: auto; width: auto; }
+    .sponsor-logos1 img { max-height: 100px; margin: 10px; height: auto; width: auto; }
+
+    /* Footer */
+    footer { background: #bf5700; color: #fff; padding: 18px 0; text-align: center; }
+  </style>
+</head>
+<body>
+  <div class="page-wrap">
+
+    <!-- Header / Hero -->
+    <header class="hero" id="top">
+      <div class="container-fluid">
+        <h1>Advancing Land Modeling for Gulf Coast Resilience</h1>
+        <h3>August 14–15, 2025 &nbsp;|&nbsp; Austin, Texas (PRC Campus, UT Austin) &amp; Virtual</h3>
+        <p class="hero-sub">Hosted by The University of Texas at Austin • All times in U.S. Central Daylight Time (CDT)</p>
+      </div>
+    </header>
+
+    <!-- Tabs bar: moved BELOW the title and made sticky -->
+    <div class="tabsbar">
+      <div class="container-fluid">
+        <ul class="nav nav-pills">
+          <li class="active"><a href="#workshop-agenda">Agenda</a></li>
+          <li><a href="#participants">In-Person Participants</a></li>
+          <li><a href="#organizers">Organizers</a></li>
+          <li><a href="#posters">Posters</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <section class="section">
+      <p>Join us for a dynamic workshop hosted by The University of Texas at Austin to advance community‑driven land modeling and foster partnerships addressing environmental challenges in Texas and the Gulf Coast.</p>
+
+      <h2 class="section-title">Key Details</h2>
+      <ul class="meta-list">
+        <li><strong>Date:</strong> August 14–15, 2025</li>
+        <li><strong>Location:</strong> ROC 1.603 (PRC 196), 10601 Exploration Way, Austin, TX 78758 (see parking and campus maps at the end of this document)</li>
+        <li><strong>Participants:</strong> 255 registered (72 in‑person, 183 virtual)</li>
+      </ul>
+      <p class="note">
+        Notes: Breakfast, lunch, and dinner provided on both days. International virtual talks are pre‑recorded (12 minutes). Virtual sessions will be recorded for asynchronous viewing. A poster session is scheduled on Day 1. A panel discussion will be held each day to synthesize key findings for Gulf Coast resilience. Sessions end by ~5:30 PM (no later than 6:00 PM).
+      </p>
+
+      <h2 class="section-title">Venue Location</h2>
+      <p><strong>Pickle Research Campus, UT Austin</strong><br />ROC 1.603 Seminar Room (PRC 196), 10100 Burnet Rd, Austin, TX 78758</p>
+      <div style="width:100%; height:380px; margin-bottom:20px; border-radius:10px; overflow:hidden; box-shadow:0 8px 22px rgba(0,0,0,.08);">
+        <iframe width="100%" height="100%" frameborder="0" style="border:0" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Texas+Advanced+Computing+Center&output=embed"></iframe>
+      </div>
+    
+          <div class="venue-photos">
+      <div class="row">
+        <div class="col-sm-6">
+          <figure>
+            <img src="images/venue1.png" class="venue-img" alt="ROC 1.603 Seminar Room at UT Austin PRC" loading="lazy" />
+            <figcaption>ROC 1.603 Seminar Room (PRC 196) — main in-person sessions</figcaption>
+          </figure>
+        </div>
+        <div class="col-sm-6">
+          <figure>
+            <img src="images/venue2.png" class="venue-img" alt="ROC 1.000 Lobby Atrium at UT Austin PRC" loading="lazy" />
+            <figcaption>ROC 1.000 Lobby Atrium — coffee breaks &amp; poster session</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+
+
+      <h2 class="section-title" id="workshop-agenda">Workshop Agenda</h2>
+
+      <!-- DAY 1 -->
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><strong>Day 1: Thursday, August 14, 2025</strong>
+            <small>ROC 1.603 (PRC 196) &nbsp;|&nbsp; Breakfast from 7:30 AM</small>
+          </h3>
+        </div>
+        <div class="panel-body">
+          <div class="zoom-box">
+            <p><strong>Join Zoom Meeting:</strong> <a href="https://utexas.zoom.us/j/88479965087?pwd=c4RRNwgBItS3hqDeIJ1rizp97sZuhv.1">https://utexas.zoom.us/j/88479965087?pwd=c4RRNwgBItS3hqDeIJ1rizp97sZuhv.1</a><br />
+            <strong>Meeting ID:</strong> 884 7996 5087 &nbsp;&nbsp; <strong>Passcode:</strong> 082025</p>
+          </div>
+
+          <h4>7:30–8:00 AM &nbsp; Networking and Breakfast</h4>
+          <p class="note">Provided at ROC 1.603 Seminar Room. Structured icebreaker activity.</p>
+
+          <h4>Session 1: Opening Remarks &amp; Overview</h4>
+          <p><strong>Chair:</strong> Zong‑Liang Yang &nbsp;|&nbsp; <strong>Notetaker:</strong> Shokoufeh Khojeh<br />
+          <em>Objective:</em> Introduce workshop goals, focusing on Noah‑MP advancements for Gulf Coast resilience.</p>
+          <table class="table table-striped table-condensed">
+            <thead><tr><th>Time</th><th>Presentation Title</th><th>Speaker</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td>8:00–8:05 AM</td><td>Opening Remarks, Logistics &amp; Expectations</td><td>Zong‑Liang Yang</td><td>In person</td></tr>
+              <tr><td>8:05–8:15 AM</td><td>Welcome on Behalf of EPS Department &amp; Jackson School</td><td>Danny Stockli, Chair</td><td>In person</td></tr>
+              <tr><td>8:15–8:30 AM</td><td>History of Noah Land Model Development</td><td>Mike Ek</td><td>In person</td></tr>
+              <tr><td>8:30–8:45 AM</td><td>Recent Updates of Noah‑MP &amp; Community Activity</td><td>Cenlin He</td><td>In person</td></tr>
+            </tbody>
+          </table>
+
+          <h4>Session 2: Extreme Events (Floods/Droughts)</h4>
+          <p><strong>Chair:</strong> Michael Ek &nbsp;|&nbsp; <strong>Notetaker:</strong> Xinxin Sui<br />
+          <em>Objective:</em> Explore modeling of floods and droughts critical for Gulf Coast resilience.</p>
+          <table class="table table-striped table-condensed">
+            <thead><tr><th>Time</th><th>Presentation Title</th><th>Speaker</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td>8:45–9:05 AM</td><td><strong>Keynote:</strong> Extreme Weather Events in Texas</td><td>JR DeShazo</td><td>In person</td></tr>
+              <tr><td>9:05–9:20 AM</td><td>Evaluation of WRF Model for Extreme Rainfall</td><td>Gamal El Afandi</td><td>In person</td></tr>
+              <tr><td>9:20–9:35 AM</td><td>Strongly Coupled Land‑Atmosphere Data Assimilation</td><td>Zhaoxia Pu</td><td>In person</td></tr>
+              <tr><td>9:35–9:50 AM</td><td>Urban‑Scale Interaction of Monsoon Depressions with Indian Cities from a High Resolution Model Perspective</td><td>Shyama Mohanty</td><td>In person</td></tr>
+              <tr><td>9:50–10:05 AM</td><td>General Discussion</td><td>Moderated by Michael Ek</td><td></td></tr>
+            </tbody>
+          </table>
+
+          <p><strong>10:05–10:20 AM:</strong> Coffee Break — networking with poster previews in ROC 1.000 Lobby Atrium.</p>
+
+          <h4>Session 3: Coastal Resilience and Hydrological Applications</h4>
+          <p><strong>Chair:</strong> Noemi Vergopolan &nbsp;|&nbsp; <strong>Notetaker:</strong> Chenxi Hu<br />
+          <em>Objective:</em> Focus on hydrological modeling for coastal ecosystems, addressing plant hydraulics, salinity, and land use.</p>
+          <table class="table table-striped table-condensed">
+            <thead><tr><th>Time</th><th>Presentation Title</th><th>Speaker</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td>10:20–10:40 AM</td><td><strong>Keynote:</strong> Simulating advanced plant hydrodynamics improves the predictability of coastal carbon, water and energy fluxes</td><td>Ashley Matheny</td><td>In person</td></tr>
+              <tr><td>10:40–10:55 AM</td><td>Refining Terrestrial Water and Carbon Modeling</td><td>Lingcheng Li</td><td>In person</td></tr>
+              <tr><td>10:55–11:10 AM</td><td>Geospatial Modeling for Hydrology and Infrastructure</td><td>Hanadi Rifai</td><td>In person</td></tr>
+              <tr><td>11:10–11:25 AM</td><td>Land Use Change and Implication on Estuary Health</td><td>Angelica Ovalle</td><td>In person</td></tr>
+              <tr><td>11:25–11:40 AM</td><td>Advancing Sub‑surface Hydrology through Noah‑MP/MODFLOW Coupling within the WRF‑Hydro Hydrologic System</td><td>Farshid Felfelani</td><td>In person</td></tr>
+              <tr><td>11:40–11:55 AM</td><td>Enhancing Local‑Scale Hydrologic Realism</td><td>Noemi Vergopolan</td><td>In person</td></tr>
+              <tr><td>11:55–12:15 PM</td><td>General Discussion</td><td>Moderated by Noemi Vergopolan</td><td></td></tr>
+            </tbody>
+          </table>
+
+          <p><strong>12:15–12:25 PM:</strong> Group Photo — Place TBD.</p>
+          <p><strong>12:25–1:15 PM:</strong> Lunch — Provided at ROC 1.603 Seminar Room. Informal networking.</p>
+
+          <h4>Session 4: Hydrological Applications – Virtual</h4>
+          <p><strong>Chair:</strong> Zong‑Liang Yang &nbsp;|&nbsp; <strong>Notetaker:</strong> Chieh‑Chen Lee<br />
+          <em>Objective:</em> Highlight global hydrological advancements aligned with coastal resilience.</p>
+          <table class="table table-striped table-condensed">
+            <thead><tr><th>Time</th><th>Presentation Title</th><th>Speaker</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td>1:15–1:27 PM</td><td>Improving Winter Wheat Water‑Carbon Fluxes</td><td>Gangqiang Zhang</td><td>Virtual (pre‑recorded)</td></tr>
+              <tr><td>1:27–1:39 PM</td><td>Incorporating Peatland Physical Processes into Noah‑MP</td><td>Arijit Chakraborty</td><td>Virtual (pre‑recorded)</td></tr>
+              <tr><td>1:39–1:51 PM</td><td>Modelling Hydrological Processes in Boreal Wetlands</td><td>Danqiong Dai</td><td>Virtual (pre‑recorded)</td></tr>
+              <tr><td>1:51–2:03 PM</td><td>Optimizing Noah‑MP Parameters for Heat Fluxes</td><td>David Donaire Montaño</td><td>Virtual (pre‑recorded)</td></tr>
+              <tr><td>2:03–2:18 PM</td><td>Hydrologic Modeling across Western U.S. Burned Landscapes</td><td>Ronnie Abolafia‑Rosenzweig</td><td>In person</td></tr>
+              <tr><td>2:18–2:30 PM</td><td>General Discussion</td><td>Moderated by Zong‑Liang Yang</td><td></td></tr>
+            </tbody>
+          </table>
+
+          <p><strong>2:30–2:45 PM:</strong> Coffee Break — networking with poster previews in ROC 1.000 Lobby Atrium.</p>
+
+          <h4>Session 5: AI/ML Application &amp; Integration with Physical Models</h4>
+          <p><strong>Chair:</strong> Guo‑Yue Niu &nbsp;|&nbsp; <strong>Notetaker:</strong> Koutian Wu<br />
+          <em>Objective:</em> Advance land modeling with AI/ML for Gulf Coast challenges.</p>
+          <table class="table table-striped table-condensed">
+            <thead><tr><th>Time</th><th>Presentation Title</th><th>Speaker</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td>2:45–3:05 PM</td><td><strong>Keynote:</strong> Differentiable Land Modeling to Meet Challenges in the Southern Great Plains and Gulf Coast</td><td>Dapeng Feng</td><td>In person</td></tr>
+              <tr><td>3:05–3:20 PM</td><td>Refactor and Optimize Noah‑MP with Differential Learning</td><td>Guo‑Yue Niu</td><td>In person</td></tr>
+              <tr><td>3:20–3:35 PM</td><td>Spatiotemporal Emulation of SWE with ConvLSTM</td><td>Stanley Akor</td><td>In person</td></tr>
+              <tr><td>3:35–3:50 PM</td><td>Coupling ML‑Based Snow‑Covered Area to Noah‑MP</td><td>Tom Enzminger</td><td>In person</td></tr>
+              <tr><td>3:50–4:05 PM</td><td>General Discussion</td><td>Moderated by Guo‑Yue Niu</td><td></td></tr>
+            </tbody>
+          </table>
+
+          <p><strong>4:05–4:20 PM:</strong> Coffee Break — networking with poster previews in ROC 1.000 Lobby Atrium.</p>
+
+          <h4>Session 6: AI/ML Panel Discussion</h4>
+          <p><strong>Chair:</strong> Dapeng Feng &nbsp;|&nbsp; <strong>Notetaker:</strong> Harsh Kamath<br />
+          <em>Objective:</em> Discuss AI/ML integration in land modeling for Gulf Coast resilience.</p>
+          <table class="table table-striped table-condensed">
+            <thead><tr><th>Time</th><th>Presentation Title</th><th>Speaker(s)</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td>4:20–4:50 PM</td><td>Panel: AI/ML in Land Modeling for Resilience</td><td>Guo‑Yue Niu, Tom Enzminger, Noemi Vergopolan, Naveen Sudharsan</td><td>In person</td></tr>
+              <tr><td>4:50–5:05 PM</td><td>General Discussion</td><td>Moderated by Dapeng Feng</td><td></td></tr>
+            </tbody>
+          </table>
+
+          <h4>5:05–5:50 PM &nbsp; Poster Session (Chair: Eunsang Cho)</h4>
+          <ul>
+            <li>Location: ROC 1.000 Lobby Atrium</li>
+            <li>Presenters: 17 posters (see full list below)</li>
+            <li>Format: 2‑minute lightning talks (pre‑recorded) for 8 virtual poster attendees, followed by open viewing of 9 in‑person posters.</li>
+          </ul>
+
+          <h4>6:00–8:00 PM &nbsp; Dinner and Networking</h4>
+          <p class="note">Casa do Brasil, 10515 N Mopac Expy NB, Austin, TX 78759.</p>
+        </div>
+      </div>
+
+      <!-- DAY 2 -->
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><strong>Day 2: Friday, August 15, 2025</strong>
+            <small>ROC 1.603 (PRC 196) &nbsp;|&nbsp; Breakfast from 7:30 AM</small>
+          </h3>
+        </div>
+        <div class="panel-body">
+          <div class="zoom-box">
+            <p><strong>Join Zoom Meeting:</strong> <a href="https://utexas.zoom.us/j/88378802620?pwd=FnRCYTxTQlbiAdobuQg08Y8hyy67P2.1">https://utexas.zoom.us/j/88378802620?pwd=FnRCYTxTQlbiAdobuQg08Y8hyy67P2.1</a><br />
+            <strong>Meeting ID:</strong> 883 7880 2620 &nbsp;&nbsp; <strong>Passcode:</strong> 082025</p>
+          </div>
+
+          <h4>7:30–8:00 AM &nbsp; Networking and Breakfast</h4>
+          <p class="note">Provided at ROC 1.603 Seminar Room. Structured networking activity.</p>
+
+          <h4>Session 7: Subseasonal‑to‑Seasonal Prediction – In‑Person</h4>
+          <p><strong>Chair:</strong> Meg Fowler &nbsp;|&nbsp; <strong>Notetaker:</strong> Zhe Zhang<br />
+          <em>Objective:</em> Explore S2S forecasting for Gulf Coast resilience.</p>
+          <table class="table table-striped table-condensed">
+            <thead><tr><th>Time</th><th>Presentation Title</th><th>Speaker</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td>8:00–8:20 AM</td><td><strong>Keynote:</strong> Progress, Challenges, and Opportunities in Subseasonal to Seasonal Predictions in the Southern Great Plains and Gulf Coast</td><td>Yaga Richter</td><td>In person</td></tr>
+              <tr><td>8:20–8:35 AM</td><td>Land‑Atmosphere Interactions in Earth System Models</td><td>Meg Fowler</td><td>In person</td></tr>
+              <tr><td>8:35–8:50 AM</td><td>Refining MPAS/Noah‑MP for Extreme Events</td><td>Zhe Zhang</td><td>In person</td></tr>
+              <tr><td>8:50–9:05 AM</td><td>Western US Snowpack for S2S Prediction</td><td>Yuan Qiu</td><td>In person</td></tr>
+              <tr><td>9:05–9:20 AM</td><td>General Discussion</td><td>Moderated by Meg Fowler</td><td></td></tr>
+            </tbody>
+          </table>
+
+          <h4>Session 8: Subseasonal‑to‑Seasonal Prediction – Virtual</h4>
+          <p><strong>Chair:</strong> Meg Fowler &nbsp;|&nbsp; <strong>Notetaker:</strong> Zhe Zhang<br />
+          <em>Objective:</em> Continue S2S discussions with virtual perspectives.</p>
+          <table class="table table-striped table-condensed">
+            <thead><tr><th>Time</th><th>Presentation Title</th><th>Speaker</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td>9:20–9:32 AM</td><td>Enhancing Sub‑Seasonal Predictability of Storms</td><td>Shanru Tian</td><td>Virtual (pre‑recorded)</td></tr>
+              <tr><td>9:32–9:44 AM</td><td>Progress and Challenges in S2S: NOAA Perspective</td><td>Yan Xue</td><td>Virtual (pre‑recorded)</td></tr>
+              <tr><td>9:44–9:56 AM</td><td>Dry and Warm Central CONUS in UFS MRF and S2S</td><td>Weizhong Zheng</td><td>Virtual (pre‑recorded)</td></tr>
+              <tr><td>9:56–10:08 AM</td><td>Refining Noah‑MP in the Korean Integrated Model</td><td>Hyeon‑Ju Gim</td><td>Virtual (pre‑recorded)</td></tr>
+              <tr><td>10:08–10:23 AM</td><td>General Discussion</td><td>Moderated by Meg Fowler</td><td></td></tr>
+            </tbody>
+          </table>
+
+          <p><strong>10:23–10:38 AM:</strong> Coffee Break — networking with poster previews in ROC 1.000 Lobby Atrium.</p>
+
+          <h4>Session 9: Land/Hydro/Weather Datasets</h4>
+          <p><strong>Chair:</strong> Cenlin He &nbsp;|&nbsp; <strong>Notetaker:</strong> Shokoufeh Khojeh<br />
+          <em>Objective:</em> Advance dataset development for improved land modeling and coastal applications.</p>
+          <table class="table table-striped table-condensed">
+            <thead><tr><th>Time</th><th>Presentation Title</th><th>Speaker</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td>10:38–10:58 AM</td><td><strong>Keynote:</strong> Advances land hydro data fusion with modeling, data assimilation, and machine learning</td><td>Sujay Kumar</td><td>Virtual (pre‑recorded)</td></tr>
+              <tr><td>10:58–11:13 AM</td><td>Noah‑MP in NLDAS Phase 3</td><td>David Mocko</td><td>Virtual (pre‑recorded)</td></tr>
+              <tr><td>11:13–11:28 AM</td><td>GLObal Building heights for Urban Studies (UT‑GLOBUS) datasets and its applications</td><td>Harsh Kamath</td><td>In person</td></tr>
+              <tr><td>11:28–11:43 AM</td><td>Satellite‑Guided Crop Phenology for Modeling</td><td>Yan Jiang</td><td>In person</td></tr>
+              <tr><td>11:43–11:58 AM</td><td>Corrected Observationally Gridded Land–Atmosphere Coupling Metrics</td><td>Nazanin Tavakoli</td><td>Virtual (pre‑recorded)</td></tr>
+              <tr><td>11:58–12:15 PM</td><td>General Discussion</td><td>Moderated by Cenlin He</td><td></td></tr>
+            </tbody>
+          </table>
+
+          <p><strong>12:15–1:15 PM:</strong> Lunch — Provided at ROC 1.603 Seminar Room. Informal networking.</p>
+
+          <h4>Session 10: Urban Modeling and Application</h4>
+          <p><strong>Chair:</strong> Noemi Vergopolan &nbsp;|&nbsp; <strong>Notetaker:</strong> Harsh Kamath<br />
+          <em>Objective:</em> Address urban impacts on hydrology and climate in coastal cities.</p>
+          <table class="table table-striped table-condensed">
+            <thead><tr><th>Time</th><th>Presentation Title</th><th>Speaker</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td>1:15–1:35 PM</td><td><strong>Keynote:</strong> Urban Impacts on Clouds and Storms in Houston</td><td>Yun Qian</td><td>In person</td></tr>
+              <tr><td>1:35–1:50 PM</td><td>Noah‑MP on Urban Heat Island in Singapore</td><td>Vivek Kumar Singh</td><td>In person</td></tr>
+              <tr><td>1:50–2:05 PM</td><td>Climate adaptation and mitigation</td><td>Marc Coudert</td><td>In person</td></tr>
+              <tr><td>2:05–2:20 PM</td><td><em>Invited:</em> Resolving Urban Complexity in Land Surface Modeling: Challenges and Opportunities</td><td>Chenghao Wang</td><td>Virtual (pre‑recorded)</td></tr>
+              <tr><td>2:20–2:35 PM</td><td>Relative Effects of Urban Stormwater and Reservoir Management on Floods Over the U.S.</td><td>Seife Eriget</td><td>Virtual (pre‑recorded)</td></tr>
+              <tr><td>2:35–2:50 PM</td><td>Enhancing Urban and Land Surface Meteorology</td><td>Tzu‑Shun Lin</td><td>Virtual (pre‑recorded)</td></tr>
+              <tr><td>2:50–3:05 PM</td><td>General Discussion</td><td>Moderated by Noemi Vergopolan</td><td></td></tr>
+            </tbody>
+          </table>
+
+          <p><strong>3:05–3:20 PM:</strong> Coffee Break — networking with poster previews in ROC 1.000 Lobby Atrium.</p>
+
+          <h4>Session 11: Community Engagement and Policy‑Driven Modeling</h4>
+          <p><strong>Chair:</strong> Huilin Gao &nbsp;|&nbsp; <strong>Notetaker:</strong> Xinxin Sui<br />
+          <em>Objective:</em> Connect land modeling to community needs and policy for Gulf Coast resilience.</p>
+          <table class="table table-striped table-condensed">
+            <thead><tr><th>Time</th><th>Presentation Title</th><th>Speaker</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td>3:20–3:40 PM</td><td><strong>Keynote:</strong> Translational Science for Resilience</td><td>Andrew Newman</td><td>In person</td></tr>
+              <tr><td>3:40–4:00 PM</td><td><strong>Keynote:</strong> Predictive Land Modeling for Water</td><td>Nelun Fernando</td><td>In person</td></tr>
+              <tr><td>4:00–4:20 PM</td><td><strong>Keynote:</strong> Climate Change Impacts on Water Supply</td><td>Marisa Flores Gonzalez</td><td>In person</td></tr>
+              <tr><td>4:20–4:35 PM</td><td>Advancing Daily Reservoir Evaporation Monitoring to Support Water Resources Management in Texas</td><td>Huilin Gao</td><td>In person</td></tr>
+              <tr><td>4:35–4:50 PM</td><td>Noah‑MP at NOAA: Community‑Focused Development</td><td>Michael Barlage</td><td>Virtual (pre‑recorded)</td></tr>
+              <tr><td>4:50–5:05 PM</td><td>General Discussion</td><td>Moderated by Huilin Gao</td><td></td></tr>
+            </tbody>
+          </table>
+
+          <h4>Session 12: Panel Discussion – Gulf Coast Resilience</h4>
+          <p><strong>Chair:</strong> Soe Myint &nbsp;|&nbsp; <strong>Notetaker:</strong> Meg Fowler<br />
+          <em>Objective:</em> Synthesize workshop findings and outline actionable steps for Gulf Coast resilience.</p>
+          <table class="table table-striped table-condensed">
+            <thead><tr><th>Time</th><th>Presentation Title</th><th>Speaker(s)</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td>5:05–5:35 PM</td><td>Panel: Advancing Land Modeling for Gulf Coast Resilience</td><td>Andy Newman, Ashley Matheny, Nelun Fernando, Marisa Flores Gonzalez</td><td>In person</td></tr>
+              <tr><td>5:35–5:50 PM</td><td>Closing Remarks</td><td>Zong‑Liang Yang</td><td>In person</td></tr>
+            </tbody>
+          </table>
+
+          <h4>6:00–8:00 PM &nbsp; Dinner and Networking</h4>
+          <p class="note">Casa do Brasil, 10515 N Mopac Expy NB, Austin, TX 78759.</p>
+        </div>
+      </div>
+
+      <h2 class="section-title" id="posters">Full List of Posters</h2>
+      <p class="note">Poster session on Day 1 (August 14), 5:05–5:50 PM. Organized by scientific session theme.</p>
+
+      <h4>Hydrological Application and Advancement (4 Posters)</h4>
+      <ol>
+        <li><strong>Anuj Prakash Kushwaha</strong> (remote, 2‑min lightning talk pre‑recording) — IIT Gandhinagar, India — <em>Multimodel Assessment of Water Budget in Indian Sub‑continental River Basins</em> — <a href="mailto:anuj.k@iitgn.ac.in">anuj.k@iitgn.ac.in</a></li>
+        <li><strong>Mohammad Farmani</strong> (remote, 2‑min lightning talk pre‑recording) — University of Arizona, USA — <em>Improving Streamflow Predictions in the Arid Southwestern United States through Understanding of Baseflow Generation Mechanisms</em> — <a href="mailto:farmani@arizona.edu">farmani@arizona.edu</a></li>
+        <li><strong>Koutian Wu</strong> (in person) — UT Austin, USA — <em>Noah‑MP land surface model with plant hydraulics scheme (Noah‑MP‑PHS) Evaluation</em> — <a href="mailto:ktwu@utexas.edu">ktwu@utexas.edu</a></li>
+        <li><strong>Mahsa Moradi</strong> (in person) — University of New Hampshire, USA — <em>Noah‑MP Snow Processes in Eastern US and Hydrological Implications</em> — <a href="mailto:mm1631@usnh.edu">mm1631@usnh.edu</a></li>
+      </ol>
+
+      <h4>Extreme Weather and Events (5 Posters)</h4>
+      <ol>
+        <li><strong>Viral Patel</strong> (remote, 2‑min lightning talk pre‑recording) — Pandit Deendayal Energy University, India — <em>Extreme Weather Modeling for Coastal Regions</em> — <a href="mailto:patelvrl434@gmail.com">patelvrl434@gmail.com</a></li>
+        <li><strong>Israel Orimoloye</strong> (remote, 2‑min lightning talk pre‑recording) — University of the Free State, South Africa — <em>Drought Modeling for Coastal Resilience</em> — <a href="mailto:Orimoloyeisrael@gmail.com">Orimoloyeisrael@gmail.com</a></li>
+        <li><strong>Prolay Saha</strong> (remote, 2‑min lightning talk pre‑recording) — India (Institution not specified) — <em>Mesoscale Convective System over Northeast India‑Bangladesh</em> — <a href="mailto:prolay.saha@example.com">prolay.saha@example.com</a></li>
+        <li><strong>Eunsaem Cho</strong> (remote, 2‑min lightning talk pre‑recording) — NASA GSFC — <em>Evaluating Multiple Parameterization Physics for Enhanced Large‑Scale Flood Prediction in the Missouri River Basin</em> — <a href="mailto:eunsaem.cho@nasa.gov">eunsaem.cho@nasa.gov</a></li>
+        <li><strong>Zhanfei Liu</strong> (in person) — UT Austin — <em>Impact of Extreme Weather Events on Texas Bays and Estuaries</em> — <a href="mailto:zhanfei.liu@utexas.edu">zhanfei.liu@utexas.edu</a></li>
+      </ol>
+
+      <h4>AI/ML Application &amp; Integration with Physical Models (2 Posters)</h4>
+      <ol>
+        <li><strong>M Niranjannaik</strong> (remote, 2‑min lightning talk pre‑recording) — Indian Institute of Technology Gandhinagar, India — <em>AI‑Driven Coastal Resilience Modeling</em> — <a href="mailto:m.niranjannaik@iitgn.ac.in">m.niranjannaik@iitgn.ac.in</a></li>
+        <li><strong>M Mbarak</strong> (in person) — University of Texas at Austin, USA — <em>NoahMP‑AI: Enhancing Land Surface Model Prediction with Deep Learning</em> — <a href="mailto:mbarak@utexas.edu">mbarak@utexas.edu</a></li>
+      </ol>
+
+      <h4>Urban Modeling and Application (3 Posters)</h4>
+      <ol>
+        <li><strong>Hongping Gu</strong> (remote, lightning talk pre‑recording) — USU, USA — <em>Remote Effects of Urbanization on Temperatures in Adjacent Cities: A Case Study in Utah</em> — <a href="mailto:hongping.gu@usu.edu">hongping.gu@usu.edu</a></li>
+        <li><strong>Harsh Kamath</strong> (in person) — University of Texas at Austin, USA — <em>Urban Influence on Convection and Precipitation in the Coastal City of Houston, TX: Modelling Urban Precipitation Impacts Beyond the Grey Zone</em> — <a href="mailto:kamath.harsh@utexas.edu">kamath.harsh@utexas.edu</a></li>
+        <li><strong>Yiming Zhang</strong> (in person) — UT Austin, USA — <em>Urban Modeling for Coastal Resilience</em> — <a href="mailto:yiming.zhang@beg.utexas.edu">yiming.zhang@beg.utexas.edu</a></li>
+      </ol>
+
+      <h4>Subseasonal‑to‑Seasonal Prediction (3 Posters)</h4>
+      <ol>
+        <li><strong>Muzhen Yang</strong> (in person) — Texas A&amp;M University, USA — <em>Assessment of Subseasonal‑to‑Seasonal (S2S) Streamflow and Reservoir Storage Forecast Skills in the Trinity River Basin</em> — <a href="mailto:yangmuzhen@tamu.edu">yangmuzhen@tamu.edu</a></li>
+        <li><strong>Jagger Alexander</strong> (in person) — University of Texas at Austin, USA — <em>Subseasonal‑to‑Seasonal Heatwave Forecasting Using Machine Learning, Dynamical Models, and Reanalysis Data</em> — <a href="mailto:jaggeralexander@utexas.edu">jaggeralexander@utexas.edu</a></li>
+        <li><strong>MD ANISUZZAMAN RAFY</strong> (in person) — Univ of Houston, USA — <em>S2S related</em> — <a href="mailto:mrafy@cougarnet.uh.edu">mrafy@cougarnet.uh.edu</a></li>
+      </ol>
+    </section>
+
+    <!-- Participants -->
+    <section class="section" id="participants">
+      <h2 class="section-title">Participants</h2>
+      <input type="text" id="participantFilter" class="form-control participant-search" placeholder="Search participants by name or affiliation…" />
+      <ul class="participants-list">
+        <li><a href="https://profiles.rice.edu/student/adnan-dehghani" target="_blank">Adnan Dehghani</a>, Rice University</li>
+        <li><a href="https://artsci.tamu.edu/atmos-science/contact/profiles/andrew-dessler.html" target="_blank">Andrew Dessler</a>, Texas A&amp;M University</li>
+        <li><a href="https://ral.ucar.edu/directory/andrew-newman" target="_blank">Andrew Newman</a>, NSF NCAR</li>
+        <li><a href="https://www.harteresearch.org/people/angelica-ovalle" target="_blank">Angelica Ovalle</a>, TAMUCC</li>
+        <li><a href="https://www.beg.utexas.edu/people/ashraf-rateb" target="_blank">Ashraf Rateb</a>, University of Texas at Austin</li>
+        <li><a href="https://www.jsg.utexas.edu/researcher/ashley_matheny/" target="_blank">Ashley Matheny</a>, University of Texas at Austin</li>
+        <li><a href="https://faculty.txst.edu/profile/2511547" target="_blank">Babak Heidari</a>, Texas State University</li>
+        <li><a href="https://www.beg.utexas.edu/people/bridget-scanlon" target="_blank">Bridget Scanlon</a>, University of Texas at Austin</li>
+        <li><a href="https://cpaess.ucar.edu/cgc-host/cenlin-he" target="_blank">Cenlin He</a>, NSF NCAR</li>
+        <li><a href="https://www.jsg.utexas.edu/researcher/chenxi_hu/" target="_blank">Chenxi Hu</a>, University of Texas at Austin</li>
+        <li><a href="https://www.linkedin.com/in/chieh-chen-lee-6a5675290/" target="_blank">Chieh-Chen Lee</a>, University of Texas at Austin</li>
+        <li><a href="https://www.jsg.utexas.edu/researcher/daniel_stockli/" target="_blank">Danny Stockli</a>, University of Texas at Austin</li>
+        <li><a href="https://profiles.stanford.edu/dapeng-feng" target="_blank">Dapeng Feng</a>, Stanford University</li>
+        <li><a href="https://faculty.txst.edu/profile/2472587" target="_blank">Eunsang Cho</a>, Texas State University</li>
+        <li><a href="https://www.linkedin.com/in/farhaan-cooverji-a19558213/" target="_blank">Farhaan Cooverji</a>, Texas State University</li>
+        <li><a href="https://ral.ucar.edu/directory/farshid-felfelani" target="_blank">Farshid Felfelani</a>, NSF NCAR</li>
+        <li><a href="https://www.tuskegee.edu/programs-courses/colleges-schools/caens/daes/contact-us/daes-faculty/gamal-el-afandi-phd" target="_blank">Gamal El Afandi</a>, Tuskegee University</li>
+        <li><a href="https://has.arizona.edu/person/guo-yue-niu" target="_blank">Guo-Yue Niu</a>, University of Arizona</li>
+        <li><a href="https://www.cive.uh.edu/faculty/rifai" target="_blank">Hanadi Rifai</a>, University of Houston</li>
+        <li><a href="https://www.linkedin.com/in/harshkamath/" target="_blank">Harsh Kamath</a>, University of Texas at Austin</li>
+        <li><a href="https://www.beg.utexas.edu/people/hassan-dashtian" target="_blank">Hassan Dashtian</a>, University of Texas at Austin</li>
+        <li><a href="https://engineering.tamu.edu/civil/profiles/hgao.html" target="_blank">Huilin Gao</a>, Texas A&amp;M University</li>
+        <li><a href="https://www.linkedin.com/in/john-zhu-555560100/" target="_blank">John Zhu</a>, Texas Water Development Board</li>
+        <li><a href="https://lbj.utexas.edu/deshazo-jr" target="_blank">JR DeShazo</a>, University of Texas at Austin</li>
+        <li><a href="https://www.linkedin.com/in/ktwu01/" target="_blank">Koutian Wu</a>, University of Texas at Austin</li>
+        <li><a href="https://www.pnnl.gov/science/staff/staff_info.asp?staff_num=10348" target="_blank">Lingcheng Li</a>, Pacific Northwest National Laboratory</li>
+        <li><a href="https://directory.illinois.edu/detail?userId=lkumar@illinois.edu&widgetId=15" target="_blank">Love Kumar</a>, University of Illinois</li>
+        <li><a href="https://www.linkedin.com/in/mahmoud-mbarak-4509b335a/" target="_blank">M Mbarak</a>, University of Texas at Austin</li>
+        <li><a href="https://www.linkedin.com/in/madhusmita-swain/" target="_blank">Madhusmita Swain</a>, University at Albany</li>
+        <li><a href="https://scholar.google.com/citations?user=FXuGjvQAAAAJ&hl=en" target="_blank">Mahsa Moradi</a>, University of New Hampshire</li>
+        <li><a href="https://soa.utexas.edu/faculty/marc-coudert" target="_blank">Marc Coudert</a>, Office of Climate Action &amp; Resilience, City of Austin</li>
+        <li><a href="https://www.jsg.utexas.edu/researcher/marc_hesse/" target="_blank">Marc Hesse</a>, University of Texas at Austin</li>
+        <li><a href="https://texaswaterassociation.org/Sys/PublicProfile/56355501" target="_blank">Marisa Flores Gonzalez</a>, Austin Water, City of Austin</li>
+        <li><a href="https://faculty.txst.edu/profile/2538928" target="_blank">Md Munir Mahmud</a>, Texas State University</li>
+        <li><a href="https://psl.noaa.gov/staff/spotlight/2020/fowler.html" target="_blank">Meg Fowler</a>, NSF NCAR</li>
+        <li><a href="https://ral.ucar.edu/directory/michael-ek" target="_blank">Mike Ek</a>, NSF NCAR</li>
+        <li><a href="https://hgao.engr.tamu.edu/people/muzhen-yang/" target="_blank">Muzhen Yang</a>, Texas A&amp;M University</li>
+        <li><a href="http://naveens.info/" target="_blank">Naveen Sudharsan</a>, University of Texas at Austin</li>
+        <li><a href="https://www.linkedin.com/in/nelun-fernando-3938bb22/" target="_blank">Nelun Fernando</a>, Texas Water Development Board</li>
+        <li><a href="https://profiles.rice.edu/faculty/noemi-vergopolan" target="_blank">Noemi Vergopolan</a>, Rice University</li>
+        <li><a href="https://www.linkedin.com/in/rakshithm01/" target="_blank">Rakshith Mallesh</a>, University of Texas at Austin</li>
+        <li>Reda, Tuskegee University</li>
+        <li><a href="https://www.linkedin.com/in/ronnie-abolafia-rosenzweig-phd/" target="_blank">Ronnie Abolafia-Rosenzweig</a>, NSF NCAR</li>
+        <li><a href="https://www.linkedin.com/in/sastalukdar/" target="_blank">Sasanka Talukdar</a>, University of Texas at Austin</li>
+        <li>Shinhye Han, Rice University</li>
+        <li><a href="https://www.linkedin.com/in/shokoufeh-khojeh/" target="_blank">Shuku Khojeh</a>, University of Texas at Austin</li>
+        <li><a href="https://www.jsg.utexas.edu/researcher/shyama_mohanty/" target="_blank">Shyama Mohanty</a>, University of Texas at Austin</li>
+        <li><a href="https://faculty.txst.edu/profile/2417388" target="_blank">Soe W Myint</a>, Texas State University</li>
+        <li><a href="https://sreenathpaleri.github.io/" target="_blank">Sreenath Paleri</a>, Texas A&amp;M University</li>
+        <li><a href="https://www.linkedin.com/in/stanley-akor-0357a01b4/" target="_blank">Stanley Akor</a>, Boise State University</li>
+        <li><a href="https://ral.ucar.edu/directory/tom-enzminger" target="_blank">Tom Enzminger</a>, NSF NCAR</li>
+        <li><a href="https://www.linkedin.com/in/vivek-kumar-singh-08717827/?originalSubdomain=in" target="_blank">Vivek Kumar Singh</a>, Oak Ridge National Lab</li>
+        <li><a href="https://www.beg.utexas.edu/people/wonhyun-lee" target="_blank">Wonhyun Lee</a>, University of Texas at Austin</li>
+        <li><a href="https://faculty.lsu.edu/zxue/files/cv-xzhao-202111-website.pdf" target="_blank">Xiaochen Zhao</a>, Louisiana State University</li>
+        <li><a href="https://www.linkedin.com/in/xinxin-sui-9b2673151/?locale=en_US" target="_blank">Xinxin Sui</a>, University of Texas at Austin</li>
+        <li><a href="https://www.linkedin.com/in/jadwiga-yaga-richter-27155b63/" target="_blank">Yaga Richter</a>, NSF NCAR</li>
+        <li><a href="https://eds.ucsd.edu/graduate/doctoral/phd/phd-students/PhD4-Profiles/Jiang-y.html" target="_blank">Yan Jiang</a>, University of California, San Diego</li>
+        <li><a href="https://www.beg.utexas.edu/people/yiming-zhang" target="_blank">Yiming Zhang</a>, University of Texas at Austin</li>
+        <li><a href="https://hgao.engr.tamu.edu/people/yinuo-zhu/" target="_blank">Yinuo Zhu</a>, Texas A&amp;M University</li>
+        <li><a href="https://search.asu.edu/profile/5199017" target="_blank">Yuan Qiu</a>, Arizona State University</li>
+        <li><a href="https://www.pnnl.gov/people/yun-qian" target="_blank">Yun Qian</a>, Pacific Northwest National Laboratory</li>
+        <li><a href="https://scholar.google.com/citations?user=R5HGJfcAAAAJ" target="_blank">Yuanhui Zhu</a>, Texas State University</li>
+        <li><a href="https://sites.create.ou.edu/chenghaowang/yuqi-huang/" target="_blank">Yuqi Huang</a>, University of Oklahoma</li>
+        <li><a href="https://marinescience.utexas.edu/directory/zhanfei-liu" target="_blank">Zhanfei Liu</a>, University of Texas at Austin</li>
+        <li><a href="https://www.linkedin.com/in/zhe-zhang-507ab4250/" target="_blank">Zhe Zhang</a>, NSF NCAR</li>
+        <li><a href="https://www.pnnl.gov/science/staff/staff_info.asp?staff_num=9440" target="_blank">Zhao Yang</a>, Pacific Northwest National Laboratory</li>
+        <li><a href="https://www.jsg.utexas.edu/researcher/zong-liang_yang/" target="_blank">Zong-Liang Yang</a>, University of Texas at Austin</li>
+      </ul>
+      <p class="note">Tip: Start typing to quickly filter the list. Links open in a new tab.</p>
+    </section>
+
+    <!-- Organizers -->
+    <section class="section" id="organizers">
+      <h2 class="section-title">Organizers</h2>
+      <div class="row">
+        <div class="col-sm-3 text-center">
+          <img src="images/liang.jpg" class="organizer-img" alt="Zong-Liang Yang" />
+          <h4>Dr. Zong‑Liang Yang</h4>
+          <p>UT Austin<br />Lead Organizer</p>
+        </div>
+        <div class="col-sm-3 text-center">
+          <img src="images/soe.jpeg" class="organizer-img" alt="Soe Win Myint" />
+          <h4>Dr. Soe Win Myint</h4>
+          <p>Texas State University<br />Co‑Organizer</p>
+        </div>
+        <div class="col-sm-3 text-center">
+          <img src="images/cenlin.jpeg" class="organizer-img" alt="Cenlin He" />
+          <h4>Dr. Cenlin He</h4>
+          <p>NSF NCAR<br />Workshop Co‑Lead</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section" id="contact">
+      <h2 class="section-title">Contact Us</h2>
+      <p><strong>Join our mailing list:</strong> Email <a href="mailto:liang@jsg.utexas.edu">liang@jsg.utexas.edu</a> to be added to updates.</p>
+      <h3>Workshop Chair</h3>
+      <p><strong>Zong‑Liang Yang</strong><br />Professor, Department of Earth and Planetary Sciences, Jackson School of Geosciences, UT Austin<br /><a href="mailto:liang@jsg.utexas.edu">liang@jsg.utexas.edu</a></p>
+      <h3>Organizing Committee</h3>
+      <p><strong>Cenlin He</strong><br />Scientist, NSF NCAR<br /><a href="mailto:cenlin@ucar.edu">cenlin@ucar.edu</a></p>
+      <p><strong>Soe Win Myint</strong><br />Professor, Department of Geography, Texas State University<br /><a href="mailto:soe.myint@txstate.edu">soe.myint@txstate.edu</a></p>
+      <p><strong>Local Organizing Committee</strong><br />Jackson School of Geosciences, UT Austin<br />Mahmoud Mbarak, Jagger Alexander, Shokoufeh Khojeh, Chieh‑Chen Lee, Chenxi Hu, Manmeet Singh, Naveen Sudharsan, Harsh Kamath, Xinxin Sui, Hassan Dashtian</p>
+    </section>
+
+    <!-- Sponsors -->
+    <section class="section">
+      <h2 class="section-title">Our Sponsors</h2>
+      <div class="text-center sponsor-logos">
+        <img src="images/ucar-logo.png" alt="UCAR Logo" />
+      </div>
+      <div class="text-center sponsor-logos1">
+        <img src="images/jsg-logo.png" alt="Jackson School of Geosciences Logo" />
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; 2025 Workshop on Advancing Land Modeling | Hosted by UT Austin</p>
+    </footer>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script>
+    // Simple client-side filter for participants
+    (function(){
+      var input = document.getElementById('participantFilter');
+      if (!input) return;
+      var list = document.querySelector('#participants .participants-list');
+      var items = Array.prototype.slice.call(list.querySelectorAll('li'));
+      input.addEventListener('input', function(){
+        var q = this.value.toLowerCase();
+        items.forEach(function(li){
+          li.style.display = li.textContent.toLowerCase().indexOf(q) !== -1 ? '' : 'none';
+        });
+      });
+    })();
+
+    // Tabs active state on scroll
+    (function() {
+      var sections = ['#workshop-agenda', '#participants', '#organizers', '#posters', '#contact'];
+      var $links = $('.tabsbar a');
+      function onScroll() {
+        var scrollPos = document.documentElement.scrollTop || document.body.scrollTop;
+        var currentId = sections[0];
+        sections.forEach(function(id){
+          var el = document.querySelector(id);
+          if (el && el.getBoundingClientRect().top + window.pageYOffset - 100 <= scrollPos) {
+            currentId = id;
+          }
+        });
+        $links.parent().removeClass('active');
+        $links.filter('[href="' + currentId + '"]').parent().addClass('active');
+      }
+      window.addEventListener('scroll', onScroll);
+      onScroll();
+    })();
+  </script>
+</body>
+</html>
