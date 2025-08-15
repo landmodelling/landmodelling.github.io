@@ -6,7 +6,7 @@
   <title>Workshop: Advancing Land Modeling for Gulf Coast Resilience</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
   <style>
-    /* --- Hero slider --- */
+/*     /* --- Hero slider --- */
     .hero-slider {
       position: relative;
       margin-top: 14px;
@@ -98,7 +98,58 @@
       .hero-card { width: 380px; }
       .hero-card img { height: 220px; }
     }
-    
+     */
+
+    /* --- Hero slider --- */
+.hero-slider {
+  position: relative;
+  margin-top: 14px;
+  padding: 8px 46px;              /* space for arrows */
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.hero-track {
+  display: flex;
+  gap: 0;                         /* no gap = no vertical line between slides */
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+}
+
+/* One image per view */
+.hero-card {
+  flex: 0 0 100%;
+  width: 100% !important;         /* override any media-query widths */
+  border-radius: 0;               /* remove edge rounding to avoid seam lines */
+  overflow: hidden;
+  background: transparent;        /* remove white edge that can look like a line */
+  box-shadow: none;               /* avoid a “line” from the shadow */
+  scroll-snap-align: start;
+}
+
+.hero-card img {
+  display: block;
+  width: 100%;
+  height: 420px;                  /* tweak to taste */
+  object-fit: cover;
+  transition: transform .25s ease;
+}
+
+.hero-card:hover img { transform: scale(1.03); }
+
+/* IMPORTANT: remove width overrides on larger screens */
+@media (min-width: 768px) {
+  .hero-card { width: 100% !important; }
+  .hero-card img { height: 480px; }   /* optional: make taller on tablets */
+}
+@media (min-width: 992px) {
+  .hero-card { width: 100% !important; }
+  .hero-card img { height: 520px; }   /* optional: taller on desktops */
+}
+
     .hero-nav {
       position: absolute; top: 50%; transform: translateY(-50%);
       width: 36px; height: 36px; line-height: 34px; text-align: center;
@@ -944,17 +995,58 @@
   // }
 
 
+//   function wireNav(){
+//   var prev = document.querySelector('.hero-prev');
+//   var next = document.querySelector('.hero-next');
+//   // var STEP = track.clientWidth * 0.9;
+//   var STEP = track.clientWidth; // exactly one full image width
+
+//   var timer = null; // we'll use the global AUTOPLAY_MS from the config up top
+
+//   function goLeft(){ track.scrollBy({ left: -STEP, behavior: 'smooth' }); }
+//   function goRight(){
+//     // If near the end, wrap to start
+//     var nearEnd = (track.scrollLeft + track.clientWidth) >= (track.scrollWidth - 2);
+//     if (nearEnd) {
+//       track.scrollTo({ left: 0, behavior: 'smooth' });
+//     } else {
+//       track.scrollBy({ left: STEP, behavior: 'smooth' });
+//     }
+//   }
+
+//   if (prev) prev.addEventListener('click', goLeft);
+//   if (next) next.addEventListener('click', goRight);
+
+//   function startAuto(){
+//     if (!timer) timer = setInterval(goRight, AUTOPLAY_MS);
+//   }
+//   function stopAuto(){
+//     if (timer) { clearInterval(timer); timer = null; }
+//   }
+
+//   // Always auto-slide (pause only on interaction)
+//   startAuto();
+//   ['mouseenter','focusin','touchstart'].forEach(function(ev){
+//     track.addEventListener(ev, stopAuto);
+//   });
+//   ['mouseleave','focusout'].forEach(function(ev){
+//     track.addEventListener(ev, startAuto);
+//   });
+// }
+
   function wireNav(){
   var prev = document.querySelector('.hero-prev');
   var next = document.querySelector('.hero-next');
-  // var STEP = track.clientWidth * 0.9;
-  var STEP = track.clientWidth; // exactly one full image width
+  var timer = null; // uses AUTOPLAY_MS from config
 
-  var timer = null; // we'll use the global AUTOPLAY_MS from the config up top
+  function stepWidth(){ return track.clientWidth; }
 
-  function goLeft(){ track.scrollBy({ left: -STEP, behavior: 'smooth' }); }
+  function goLeft(){
+    track.scrollBy({ left: -stepWidth(), behavior: 'smooth' });
+  }
+
   function goRight(){
-    // If near the end, wrap to start
+    var STEP = stepWidth();
     var nearEnd = (track.scrollLeft + track.clientWidth) >= (track.scrollWidth - 2);
     if (nearEnd) {
       track.scrollTo({ left: 0, behavior: 'smooth' });
@@ -966,21 +1058,15 @@
   if (prev) prev.addEventListener('click', goLeft);
   if (next) next.addEventListener('click', goRight);
 
-  function startAuto(){
-    if (!timer) timer = setInterval(goRight, AUTOPLAY_MS);
-  }
-  function stopAuto(){
-    if (timer) { clearInterval(timer); timer = null; }
-  }
+  function startAuto(){ if (!timer) timer = setInterval(goRight, AUTOPLAY_MS); }
+  function stopAuto(){ if (timer) { clearInterval(timer); timer = null; } }
 
-  // Always auto-slide (pause only on interaction)
   startAuto();
-  ['mouseenter','focusin','touchstart'].forEach(function(ev){
-    track.addEventListener(ev, stopAuto);
-  });
-  ['mouseleave','focusout'].forEach(function(ev){
-    track.addEventListener(ev, startAuto);
-  });
+  ['mouseenter','focusin','touchstart'].forEach(function(ev){ track.addEventListener(ev, stopAuto); });
+  ['mouseleave','focusout'].forEach(function(ev){ track.addEventListener(ev, startAuto); });
+
+  // Keep step in sync if the layout changes
+  window.addEventListener('resize', function(){ /* no-op; stepWidth() reads live size */ });
 }
 
   function tryManifest(){
