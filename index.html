@@ -25,7 +25,7 @@
     }
     .hero-track::-webkit-scrollbar { height: 6px; }
     .hero-track::-webkit-scrollbar-thumb { background: rgba(255,255,255,.25); border-radius: 999px; }
-    
+/*     
     .hero-card {
       position: relative;
       flex: 0 0 auto;
@@ -43,6 +43,14 @@
       object-fit: cover;
       transition: transform .25s ease;
     }
+ */
+        /* --- Hero slider sizing tweaks --- */
+    .hero-card {
+      width: 300px;                 /* was 220/260/300; now larger even on phones */
+    }
+    .hero-card img {
+      height: 180px;                /* was 120/140/160; bump up for bigger visuals */
+    }
     .hero-card:hover img { transform: scale(1.03); }
     
     .hero-tag {
@@ -52,13 +60,22 @@
     }
     
     /* show 2 or 3 per view on wider screens */
-    @media (min-width: 768px) {
+/*     @media (min-width: 768px) {
       .hero-card { width: 260px; }
       .hero-card img { height: 140px; }
     }
     @media (min-width: 992px) {
       .hero-card { width: 300px; }
       .hero-card img { height: 160px; }
+    }
+ */
+    @media (min-width: 768px) {
+      .hero-card { width: 340px; }
+      .hero-card img { height: 200px; }
+    }
+    @media (min-width: 992px) {
+      .hero-card { width: 380px; }
+      .hero-card img { height: 220px; }
     }
     
     .hero-nav {
@@ -847,55 +864,101 @@
 
   function pad2(n){ return (n<10?'0':'')+n; }
 
-  function card(name){
+  // function card(name){
+  //   var fig = document.createElement('figure');
+  //   fig.className = 'hero-card';
+  //   fig.innerHTML =
+  //     '<span class="hero-tag">2025</span>' +
+  //     '<img loading="lazy" src="'+ DIR + name +'" alt="Workshop photo">';
+  //   return fig;
+  // }
+
+    function card(name){
     var fig = document.createElement('figure');
     fig.className = 'hero-card';
-    fig.innerHTML =
-      '<span class="hero-tag">2025</span>' +
-      '<img loading="lazy" src="'+ DIR + name +'" alt="Workshop photo">';
+    fig.innerHTML = '<img loading="lazy" src="'+ DIR + name +'" alt="Workshop photo">';
     return fig;
   }
+
 
   function render(files){
     files.forEach(function(n){ track.appendChild(card(n)); });
     wireNav();
   }
 
+  // function wireNav(){
+  //   var prev = document.querySelector('.hero-prev');
+  //   var next = document.querySelector('.hero-next');
+
+  //   if (prev && next) {
+  //     prev.addEventListener('click', function(){
+  //       track.scrollBy({ left: -track.clientWidth * 0.9, behavior: 'smooth' });
+  //     });
+  //     next.addEventListener('click', function(){
+  //       track.scrollBy({ left: track.clientWidth * 0.9, behavior: 'smooth' });
+  //     });
+  //   }
+
+  //   // autoplay (pause when header not visible)
+  //   var timer = setInterval(function(){ next ? next.click() : track.scrollBy({left: track.clientWidth*0.9, behavior:'smooth'}); }, AUTOPLAY_MS);
+
+  //   var hero = document.querySelector('header.hero');
+  //   if ('IntersectionObserver' in window && hero){
+  //     var io = new IntersectionObserver(function(entries){
+  //       entries.forEach(function(e){
+  //         if (e.isIntersecting) {
+  //           if (!timer) timer = setInterval(function(){ next ? next.click() : track.scrollBy({left: track.clientWidth*0.9, behavior:'smooth'}); }, AUTOPLAY_MS);
+  //         } else {
+  //           clearInterval(timer); timer = null;
+  //         }
+  //       });
+  //     }, { threshold: 0.1 });
+  //     io.observe(hero);
+  //   }
+
+  //   // also pause on user interaction
+  //   ['mouseenter','focusin','touchstart'].forEach(function(ev){
+  //     track.addEventListener(ev, function(){ clearInterval(timer); timer = null; });
+  //   });
+  // }
+
+
   function wireNav(){
-    var prev = document.querySelector('.hero-prev');
-    var next = document.querySelector('.hero-next');
+  var prev = document.querySelector('.hero-prev');
+  var next = document.querySelector('.hero-next');
+  var STEP = track.clientWidth * 0.9;
+  var timer = null; // we'll use the global AUTOPLAY_MS from the config up top
 
-    if (prev && next) {
-      prev.addEventListener('click', function(){
-        track.scrollBy({ left: -track.clientWidth * 0.9, behavior: 'smooth' });
-      });
-      next.addEventListener('click', function(){
-        track.scrollBy({ left: track.clientWidth * 0.9, behavior: 'smooth' });
-      });
+  function goLeft(){ track.scrollBy({ left: -STEP, behavior: 'smooth' }); }
+  function goRight(){
+    // If near the end, wrap to start
+    var nearEnd = (track.scrollLeft + track.clientWidth) >= (track.scrollWidth - 2);
+    if (nearEnd) {
+      track.scrollTo({ left: 0, behavior: 'smooth' });
+    } else {
+      track.scrollBy({ left: STEP, behavior: 'smooth' });
     }
-
-    // autoplay (pause when header not visible)
-    var timer = setInterval(function(){ next ? next.click() : track.scrollBy({left: track.clientWidth*0.9, behavior:'smooth'}); }, AUTOPLAY_MS);
-
-    var hero = document.querySelector('header.hero');
-    if ('IntersectionObserver' in window && hero){
-      var io = new IntersectionObserver(function(entries){
-        entries.forEach(function(e){
-          if (e.isIntersecting) {
-            if (!timer) timer = setInterval(function(){ next ? next.click() : track.scrollBy({left: track.clientWidth*0.9, behavior:'smooth'}); }, AUTOPLAY_MS);
-          } else {
-            clearInterval(timer); timer = null;
-          }
-        });
-      }, { threshold: 0.1 });
-      io.observe(hero);
-    }
-
-    // also pause on user interaction
-    ['mouseenter','focusin','touchstart'].forEach(function(ev){
-      track.addEventListener(ev, function(){ clearInterval(timer); timer = null; });
-    });
   }
+
+  if (prev) prev.addEventListener('click', goLeft);
+  if (next) next.addEventListener('click', goRight);
+
+  function startAuto(){
+    if (!timer) timer = setInterval(goRight, AUTOPLAY_MS);
+  }
+  function stopAuto(){
+    if (timer) { clearInterval(timer); timer = null; }
+  }
+
+  // Always auto-slide (pause only on interaction)
+  startAuto();
+  ['mouseenter','focusin','touchstart'].forEach(function(ev){
+    track.addEventListener(ev, stopAuto);
+  });
+  ['mouseleave','focusout'].forEach(function(ev){
+    track.addEventListener(ev, startAuto);
+  });
+}
 
   function tryManifest(){
     return fetch(DIR + MANIFEST, { cache: 'no-cache' })
