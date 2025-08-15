@@ -6,6 +6,76 @@
   <title>Workshop: Advancing Land Modeling for Gulf Coast Resilience</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
   <style>
+    /* --- Hero slider --- */
+    .hero-slider {
+      position: relative;
+      margin-top: 14px;
+      padding: 8px 46px;              /* space for arrows */
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .hero-track {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+    }
+    .hero-track::-webkit-scrollbar { height: 6px; }
+    .hero-track::-webkit-scrollbar-thumb { background: rgba(255,255,255,.25); border-radius: 999px; }
+    
+    .hero-card {
+      position: relative;
+      flex: 0 0 auto;
+      width: 220px;                    /* phone default = 1–2 visible */
+      border-radius: 10px;
+      overflow: hidden;
+      background: rgba(255,255,255,.95);
+      box-shadow: 0 6px 18px rgba(0,0,0,.18);
+      scroll-snap-align: start;
+    }
+    .hero-card img {
+      display: block;
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      transition: transform .25s ease;
+    }
+    .hero-card:hover img { transform: scale(1.03); }
+    
+    .hero-tag {
+      position: absolute; top: 6px; left: 6px;
+      background: #bf5700; color: #fff;
+      padding: 2px 6px; border-radius: 999px; font-size: 11px;
+    }
+    
+    /* show 2 or 3 per view on wider screens */
+    @media (min-width: 768px) {
+      .hero-card { width: 260px; }
+      .hero-card img { height: 140px; }
+    }
+    @media (min-width: 992px) {
+      .hero-card { width: 300px; }
+      .hero-card img { height: 160px; }
+    }
+    
+    .hero-nav {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 36px; height: 36px; line-height: 34px; text-align: center;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.35);
+      background: rgba(255,255,255,.85);
+      color: #bf5700;
+      box-shadow: 0 8px 16px rgba(0,0,0,.18);
+      cursor: pointer;
+    }
+    .hero-prev { left: 6px; }
+    .hero-next { right: 6px; }
+    .hero-nav:hover { background: #fff; }
+    @media (max-width: 480px) { .hero-nav { display: none; } } /* swipe on very small screens */
+
     .venue-photos figure { margin: 0 0 16px; }
     .venue-photos figcaption { font-size: 13px; color: #666; margin-top: 6px; }
     .venue-img { width: 100%; height: 260px; object-fit: cover; border-radius: 10px; box-shadow: 0 6px 18px rgba(0,0,0,.08); }
@@ -111,6 +181,12 @@
         <h1>Advancing Land Modeling for Gulf Coast Resilience</h1>
         <h3>August 14–15, 2025 &nbsp;|&nbsp; Austin, Texas (PRC Campus, UT Austin) &amp; Virtual</h3>
         <p class="hero-sub">Hosted by The University of Texas at Austin • All times in U.S. Central Daylight Time (CDT)</p>
+        <!-- HERO SLIDER -->
+        <div class="hero-slider" aria-label="Event photos">
+          <button class="hero-nav hero-prev" aria-label="Previous photo">&#10094;</button>
+          <div class="hero-track" id="heroTrack" tabindex="0" role="region"></div>
+          <button class="hero-nav hero-next" aria-label="Next photo">&#10095;</button>
+        </div>
       </div>
     </header>
 
@@ -754,5 +830,97 @@
       onScroll();
     })();
   </script>
+
+  <script>
+(function(){
+  // --- CONFIG ---
+  var TRACK_ID = 'heroTrack';
+  var DIR = 'images/event/';          // folder for your photos
+  var MANIFEST = 'photos.json';       // optional ["IMG_0001.jpg", ...]
+  var FALLBACK_PREFIX = 'img-';       // img-01.jpg, img-02.jpg, ...
+  var FALLBACK_EXT = '.jpg';
+  var FALLBACK_MAX = 60;              // probe up to N files
+  var AUTOPLAY_MS = 4500;
+
+  var track = document.getElementById(TRACK_ID);
+  if (!track) return;
+
+  function pad2(n){ return (n<10?'0':'')+n; }
+
+  function card(name){
+    var fig = document.createElement('figure');
+    fig.className = 'hero-card';
+    fig.innerHTML =
+      '<span class="hero-tag">2025</span>' +
+      '<img loading="lazy" src="'+ DIR + name +'" alt="Workshop photo">';
+    return fig;
+  }
+
+  function render(files){
+    files.forEach(function(n){ track.appendChild(card(n)); });
+    wireNav();
+  }
+
+  function wireNav(){
+    var prev = document.querySelector('.hero-prev');
+    var next = document.querySelector('.hero-next');
+
+    if (prev && next) {
+      prev.addEventListener('click', function(){
+        track.scrollBy({ left: -track.clientWidth * 0.9, behavior: 'smooth' });
+      });
+      next.addEventListener('click', function(){
+        track.scrollBy({ left: track.clientWidth * 0.9, behavior: 'smooth' });
+      });
+    }
+
+    // autoplay (pause when header not visible)
+    var timer = setInterval(function(){ next ? next.click() : track.scrollBy({left: track.clientWidth*0.9, behavior:'smooth'}); }, AUTOPLAY_MS);
+
+    var hero = document.querySelector('header.hero');
+    if ('IntersectionObserver' in window && hero){
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if (e.isIntersecting) {
+            if (!timer) timer = setInterval(function(){ next ? next.click() : track.scrollBy({left: track.clientWidth*0.9, behavior:'smooth'}); }, AUTOPLAY_MS);
+          } else {
+            clearInterval(timer); timer = null;
+          }
+        });
+      }, { threshold: 0.1 });
+      io.observe(hero);
+    }
+
+    // also pause on user interaction
+    ['mouseenter','focusin','touchstart'].forEach(function(ev){
+      track.addEventListener(ev, function(){ clearInterval(timer); timer = null; });
+    });
+  }
+
+  function tryManifest(){
+    return fetch(DIR + MANIFEST, { cache: 'no-cache' })
+      .then(function(r){ return r.ok ? r.json() : []; })
+      .catch(function(){ return []; });
+  }
+  function probePattern(){
+    var names = []; for (var i=1;i<=FALLBACK_MAX;i++) names.push(FALLBACK_PREFIX+pad2(i)+FALLBACK_EXT);
+    return Promise.all(names.map(function(n){
+      return new Promise(function(res){
+        var img = new Image();
+        img.onload = function(){ res(n); };
+        img.onerror = function(){ res(null); };
+        img.src = DIR + n + '?v=' + Date.now();
+      });
+    })).then(function(list){ return list.filter(Boolean); });
+  }
+
+  (async function init(){
+    var files = await tryManifest();
+    if (!files || !files.length) files = await probePattern();
+    render(files);
+  })();
+})();
+</script>
+
 </body>
 </html>
